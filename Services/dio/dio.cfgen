@@ -2,7 +2,7 @@
     dio => {
         REQUIRE              => [],
         SCRIPTS              => './dio/Scripts',
-        TEMPLATES            => '/data/psi/am',
+        TEMPLATES            => '/data/openPSI/openPSI-gears',
         TEMPLATE_PERMISSIONS => {
             './am/**'=> {
                 #CHMOD => '744'
