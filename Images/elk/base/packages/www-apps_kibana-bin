@@ -5,7 +5,7 @@ enabled=0
 www-apps/kibana-bin
 
 #@pre
-echo "www-apps/kibana-bin ~amd64" >> /etc/portage/package.accept_keywords
+echo "www-apps/kibana-bin ~amd64" >> /etc/portage/package.accept_keywords/kibana
 
 #@post
 mv /etc/kibana /etc/kibana.build

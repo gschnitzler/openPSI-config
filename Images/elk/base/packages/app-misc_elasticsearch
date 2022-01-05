@@ -11,7 +11,7 @@ app-misc/elasticsearch
 ###### use it once kibana is used and has sophisticated filters that could be retrofitted as alerts
 
 
-echo "app-misc/elasticsearch ~amd64" >> /etc/portage/package.accept_keywords
+echo "app-misc/elasticsearch ~amd64" >> /etc/portage/package.accept_keywords/elasticsearch
 
 #@post
 #

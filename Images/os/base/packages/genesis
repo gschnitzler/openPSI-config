@@ -28,7 +28,7 @@ dev-perl/Net-SFTP
 
 #@pre
 
-echo "dev-perl/Linux-Inotify2 ~amd64" >> /etc/portage/package.accept_keywords
+echo "dev-perl/Linux-Inotify2 ~amd64" >> /etc/portage/package.accept_keywords/inotify2
 
 
 #@post

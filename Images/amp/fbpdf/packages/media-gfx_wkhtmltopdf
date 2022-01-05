@@ -12,7 +12,7 @@ The emerged package is actually deinstalled in @post of the git version
 
 #@pre
 
-echo "media-gfx/wkhtmltopdf ~amd64" >> /etc/portage/package.accept_keywords
+echo "media-gfx/wkhtmltopdf ~amd64" >> /etc/portage/package.accept_keywords/wkhtmltopdf
 
 echo "media-libs/gst-plugins-base introspection nls -ogg -pango -vorbis -orc" > /etc/portage/package.use/wkhtmltopdf
 echo "dev-qt/qtwebkit printsupport" >> /etc/portage/package.use/wkhtmltopdf

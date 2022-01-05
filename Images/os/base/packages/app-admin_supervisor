@@ -12,8 +12,8 @@ app-admin/supervisor
 # upstream stabilized 4.0.4, but there is a bug that prevents syslog logging. fixed in 4.1.0, but not in portage yet.
 # resort to source version (install anyway)
 # 4.1.0 now upstream
-echo "app-admin/supervisor ~amd64" >> /etc/portage/package.accept_keywords
-# echo "dev-python/meld3 ~amd64" >> /etc/portage/package.accept_keywords
+# echo "app-admin/supervisor ~amd64" >> /etc/portage/package.accept_keywords/supervisor
+# echo "dev-python/meld3 ~amd64" >> /etc/portage/package.accept_keywords/supervisor
 
 #@post
 

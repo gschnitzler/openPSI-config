@@ -17,7 +17,7 @@ sys-auth/google-authenticator
 #emerge layman
 #layman -f -a sunrise
 #echo "source /var/lib/layman/make.conf" >> /etc/portage/make.conf
-echo "sys-auth/google-authenticator ~amd64" >> /etc/portage/package.accept_keywords
+echo "sys-auth/google-authenticator ~amd64" >> /etc/portage/package.accept_keywords/googleauth
 
 #@post
 

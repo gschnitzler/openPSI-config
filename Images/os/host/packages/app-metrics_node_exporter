@@ -14,6 +14,6 @@ app-metrics/node_exporter
 
 #@pre
 
-#echo "net-analyzer/prometheus-node_exporter ~amd64" >> /etc/portage/package.accept_keywords
-#echo "dev-util/promu ~amd64" >> /etc/portage/package.accept_keywords
+#echo "net-analyzer/prometheus-node_exporter ~amd64" >> /etc/portage/package.accept_keywords/prometheus
+#echo "dev-util/promu ~amd64" >> /etc/portage/package.accept_keywords/prometheus
 

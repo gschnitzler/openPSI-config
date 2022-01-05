@@ -15,9 +15,9 @@ app-metrics/alertmanager
 ### the alertmanager is not yet in the repository
 ### add it once available
 
-#echo "app-metrics/prometheus ~amd64" >> /etc/portage/package.accept_keywords
-echo "app-metrics/alertmanager ~amd64" >> /etc/portage/package.accept_keywords
-#echo "dev-util/promu ~amd64" >> /etc/portage/package.accept_keywords
+#echo "app-metrics/prometheus ~amd64" >> /etc/portage/package.accept_keywords/prometheus
+echo "app-metrics/alertmanager ~amd64" >> /etc/portage/package.accept_keywords/prometheus
+#echo "dev-util/promu ~amd64" >> /etc/portage/package.accept_keywords/prometheus
 
 
 

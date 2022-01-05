@@ -20,5 +20,5 @@ dracut --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-l
 
 #@pre
 
-#echo "sys-kernel/dracut ~amd64" >> /etc/portage/package.accept_keywords
+#echo "sys-kernel/dracut ~amd64" >> /etc/portage/package.accept_keywords/dracut
 

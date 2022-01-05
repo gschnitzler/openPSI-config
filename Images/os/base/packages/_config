@@ -199,9 +199,7 @@ eselect profile list
 ###################################
 
 echo "setting timezone: "
-#cp /usr/share/zoneinfo/Europe/Vienna /etc/localtime
-cp /usr/share/zoneinfo/UTC /etc/localtime
-#echo "Europe/Vienna" > /etc/timezone
+ln -s /usr/share/zoneinfo/UTC /etc/localtime
 echo "UTC" > /etc/timezone
 emerge --config sys-libs/timezone-data
 

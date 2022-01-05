@@ -14,7 +14,7 @@ enabled=0
 
 #@pre
 
-#echo "sys-kernel/hardened-sources  ~amd64" >> /etc/portage/package.accept_keywords
+#echo "sys-kernel/hardened-sources  ~amd64" >> /etc/portage/package.accept_keywords/kernel
 
 
 emerge hardened-sources genkernel
