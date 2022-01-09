@@ -4,18 +4,18 @@
         SCRIPTS              => './dio/Scripts',
         TEMPLATES            => '/data/openPSI/openPSI-gears',
         TEMPLATE_PERMISSIONS => {
-            './am/**'=> {
+            './**'=> {
                 #CHMOD => '744'
             },
-            './am/dio_init/dio.init' => {
+            './dio_init/dio.init' => {
                 CHMOD    => '750',
                 LOCATION => '/etc/init.d/dio'
             },
-            './am/dio.pl' => {
+            './dio.pl' => {
                 CHMOD    => '500',
                 LOCATION => '/usr/sbin/dio'
             },
-            './am/please.pl' => {
+            './please.pl' => {
                 CHMOD    => '550',
                 LOCATION => '/usr/bin/please'
             },
