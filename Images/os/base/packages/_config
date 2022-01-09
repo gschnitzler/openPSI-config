@@ -199,7 +199,7 @@ eselect profile list
 ###################################
 
 echo "setting timezone: "
-ln -s /usr/share/zoneinfo/UTC /etc/localtime
+rm -f /etc/localtime #&& ln -s /usr/share/zoneinfo/UTC /etc/localtime
 echo "UTC" > /etc/timezone
 emerge --config sys-libs/timezone-data
 

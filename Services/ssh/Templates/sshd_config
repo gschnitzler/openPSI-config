@@ -141,5 +141,5 @@ HostKey [% machine.self.COMPONENTS.SERVICE.ssh.HOSTKEYS.ED25519.PRIVPATH %]
 Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes128-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-ctr
 # hmac-sha1 is used by old clients, like putty and winsshfs.
 # this is also the reason the moduli file is needed.
-MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com,[% machine.self.COMPONENTS.SERVICE.ssh.ADDMACS %]
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com[% machine.self.COMPONENTS.SERVICE.ssh.ADDMACS %]
 AuthenticationMethods [% machine.self.COMPONENTS.SERVICE.ssh.AUTHMETHODS %]

@@ -22,7 +22,7 @@ echo 'chown root:root $(tty)' > /root/.profile
 echo 'export GPG_TTY=$(tty)' >> /root/.profile
 # this is used to redirect pass to the right location, which cant be done via args (only relative paths)
 # hardcoded path, because this has nothing todo with genesis, and there is no path variable for that
-echo "export PASSWORD_STORE_DIR='/data/psi/config/Secrets'" >> /root/.profile
+echo "export PASSWORD_STORE_DIR='/data/psi/config-private/Secrets'" >> /root/.profile
 
 #@pre
 ## we dont use the git extension.

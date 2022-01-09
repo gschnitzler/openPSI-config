@@ -19,7 +19,8 @@ dev-libs/libmemcached
 
 # seafile is hardcoded to python 3.6, but can work with newer versions. pip is hardwired to a version where it installs to aswell. last time this was 3.8, even though 3.9 was installed as well.
 # stick with 3.8
-eselect python set $(eselect python list | grep '3.8' | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
+# eselect python was decomissioned and is now read from the targets in the makefile.
+#eselect python set $(eselect python list | grep '3.8' | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
 ln -s /root/seafile/seafile/lib64/python3.6 /root/seafile/seafile/lib64/python3.8
 # --user is a gentoo requirement
 pip3 install --user --timeout=3600 Pillow pylibmc captcha jinja2 sqlalchemy psd-tools django-pylibmc django-simple-captcha  python3-ldap  future mysqlclient

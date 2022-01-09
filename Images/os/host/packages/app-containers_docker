@@ -4,9 +4,9 @@ enabled=1
 
 #@package
 
-app-emulation/docker
+app-containers/docker
 # gentoo split of the cli temporarily. just because upstream did not do batshit crazy things in a while.
-app-emulation/docker-cli
+app-containers/docker-cli
 
 #@post
 
@@ -95,19 +95,19 @@ rc-update add container default
 #@pre
 
 # these might be switched to stable
-#echo "app-emulation/docker-proxy ~amd64" >> /etc/portage/package.accept_keywords/docker
+#echo "app-containers/docker-proxy ~amd64" >> /etc/portage/package.accept_keywords/docker
 #echo "sys-process/tini ~amd64" >> /etc/portage/package.accept_keywords/docker
 #echo "dev-go/blackfriday ~amd64" >> /etc/portage/package.accept_keywords/docker
-#echo "app-emulation/docker ~amd64" >> /etc/portage/package.accept_keywords/docker
-#echo "app-emulation/runc ~amd64" >> /etc/portage/package.accept_keywords/docker
-#echo "app-emulation/containerd ~amd64" >> /etc/portage/package.accept_keywords/docker
+#echo "app-containers/docker ~amd64" >> /etc/portage/package.accept_keywords/docker
+#echo "app-containers/runc ~amd64" >> /etc/portage/package.accept_keywords/docker
+#echo "app-containers/containerd ~amd64" >> /etc/portage/package.accept_keywords/docker
 #echo "dev-go/sanitized-anchor-name ~amd64" >> /etc/portage/package.accept_keywords/docker
 #echo "dev-go/go-md2man ~amd64" >> /etc/portage/package.accept_keywords/docker
 #echo "sys-libs/libseccomp ~amd64" >> /etc/portage/package.accept_keywords/docker
 
-echo 'app-emulation/containerd  btrfs' > /etc/portage/package.use/docker
+echo 'app-containers/containerd  btrfs' > /etc/portage/package.use/docker
 echo "sys-libs/libseccomp static-libs" >> /etc/portage/package.use/docker
-echo "app-emulation/docker btrfs overlay seccomp -device-mapper" >> /etc/portage/package.use/docker
+echo "app-containers/docker btrfs overlay seccomp -device-mapper" >> /etc/portage/package.use/docker
 echo "sys-process/tini static" >> /etc/portage/package.use/docker
 
 # only fixed group (docker is the only package that has persistent data)
