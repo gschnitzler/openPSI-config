@@ -30,7 +30,48 @@ echo "installing grub in mbr"
 # so for now we lock to version 2.02 which is still in tree upstream.
 # mid term, we would need to reintroduce partitions and EFI. which requires rebuilding all servers
 #grub-install [% machine.self.RAID.DISK1 %]
+cat > /tmp/correct_bootorder << "EOF"
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+my $boot_first = join( ' ', split( /\s+/, join( ' ', @ARGV ) ) );
+my $cf         = {};
+my $entries    = {};
+my @neworder   = ();
+
+while ( my $line = <STDIN> ) {
+    my ( $key, @values ) = split /\s+/, $line;
+    $key =~ s/://;
+    next if $key eq 'Timeout';
+    $cf->{$key} = join ' ', @values;
+}
+
+my @order   = split /,/, delete $cf->{BootOrder};
+my $current = delete $cf->{BootCurrent} or die 'current';
+
+while ( my ( $key, $value ) = each $cf->%* ) {
+    $entries->{$value} = $1 if ( $key =~ /Boot([^*]+)/ );
+}
+
+$boot_first = delete $entries->{$boot_first};
+my $gentoo = exists $entries->{gentoo} ? delete $entries->{gentoo} : $boot_first;
+die 'boot_first' unless $boot_first;
+die 'gentoo'     unless $gentoo;
+
+push @neworder, $boot_first;
+push @neworder, $gentoo unless $boot_first eq $gentoo;
+
+for my $e (@order) {
+    push @neworder, $e if $e ne $gentoo && $e ne $boot_first;
+}
+print join( ',', @neworder ), "\n";
+
+EOF
+
 grub-install --target=x86_64-efi --efi-directory=/boot
+efibootmgr | /tmp/correct_bootorder '[% machine.self.RAID.BOOT_FIRST %]' | xargs efibootmgr --bootorder
 #[% IF machine.self.RAID.LEVEL != 'raidS' %]
 #grub-install [% machine.self.RAID.DISK2 %]
 #[% END %]
