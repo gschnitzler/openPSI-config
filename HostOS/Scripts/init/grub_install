@@ -69,9 +69,11 @@ for my $e (@order) {
 print join( ',', @neworder ), "\n";
 
 EOF
+chmod u+x /tmp/correct_bootorder
 
 grub-install --target=x86_64-efi --efi-directory=/boot
 efibootmgr | /tmp/correct_bootorder '[% machine.self.RAID.BOOT_FIRST %]' | xargs efibootmgr --bootorder
+rm -f /tmp/correct_bootorder
 #[% IF machine.self.RAID.LEVEL != 'raidS' %]
 #grub-install [% machine.self.RAID.DISK2 %]
 #[% END %]
