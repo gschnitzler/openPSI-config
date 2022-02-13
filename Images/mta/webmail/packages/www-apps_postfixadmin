@@ -8,10 +8,8 @@ www-apps/postfixadmin
 
 #@post
 
-mv /var/www/localhost/htdocs/postfixadmin/config.inc.php  /var/www/localhost/htdocs/postfixadmin/config.inc.php.dist
-ln -s [% images.paths.CONFIG %]/postfixadmin-config.inc.php /var/www/localhost/htdocs/postfixadmin/config.inc.php
-# new version of postfix requires a directory to exist that it does not ship.
-# dont know what its for.
+ln -s [% images.paths.CONFIG %]/postfixadmin-config.local.php /var/www/localhost/htdocs/postfixadmin/config.local.php
+# smarty cache
 rm -rf /var/www/localhost/htdocs/postfixadmin/templates_c
 ln -s [% images.paths.PERSISTENT %]/postfixadmin/templates_c /var/www/localhost/htdocs/postfixadmin/templates_c
 
