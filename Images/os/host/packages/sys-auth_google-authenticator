@@ -18,6 +18,7 @@ sys-auth/google-authenticator
 #layman -f -a sunrise
 #echo "source /var/lib/layman/make.conf" >> /etc/portage/make.conf
 echo "sys-auth/google-authenticator ~amd64" >> /etc/portage/package.accept_keywords/googleauth
+echo "media-gfx/qrencode png" >> /etc/portage/package.use/gauth
 
 #@post
 

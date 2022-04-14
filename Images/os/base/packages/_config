@@ -82,7 +82,7 @@ LUA_SINGLE_TARGET="lua5-3"
 CURL_SSL="openssl"
 
 # might be a good idea to put cores and gentoo mirrors into config
-GENTOO_MIRRORS="ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo/ http://mirror.netcologne.de/gentoo/ http://de-mirror.org/gentoo/"
+GENTOO_MIRRORS="https://mirror.netcologne.de/gentoo/ https://de-mirror.org/gentoo/"
 MAKEOPTS="-j28 -l28" # number of cores of the build system (including HT)
 ACCEPT_KEYWORDS="amd64"
 GRUB_PLATFORMS="efi-64" # change this to efi-64 for efi

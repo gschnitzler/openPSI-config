@@ -25,7 +25,9 @@
         add       => {
             'stage3-amd64-hardened-nomultilib-openrc' => {
                 source =>
-'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
+                # dresden seems to have problems for half a year now. hannover is very slow (1mb/s) try another mirror
+#'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
+'ftp://ftp.uni-hannover.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
                   target => '/'
             },
 
