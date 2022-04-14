@@ -19,10 +19,10 @@ ln -s [% images.paths.CONFIG %]/php/ /etc/
 # which php default settings to use (for development reasons, comment the rm -rf /etc/php out below and recopy new /etc/php)
 # PHP API for extensions
 echo PHP_INI_VERSION=\"production\" >> /etc/portage/make.conf
-echo PHP_TARGETS=\"php7-3\"  >> /etc/portage/make.conf
+echo PHP_TARGETS=\"php7-4\"  >> /etc/portage/make.conf
 
-# lock to 7.3
-echo ">=dev-lang/php-7.4.0" >> /etc/portage/package.mask/php73
+# lock to 7.4
+echo ">=dev-lang/php-7.5.0" >> /etc/portage/package.mask/php74
 
 # imap is a webmail dep
 # mysql is needed for pdo, see https://bugs.gentoo.org/show_bug.cgi?id-481190

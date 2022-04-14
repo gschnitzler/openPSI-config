@@ -2,7 +2,7 @@
     amp_pagekit => {
         root    => './amp/pagekit',
         scripts => './os/base/scripts',
-        from    => 'amp73_base',
+        from    => 'amp74_base',
         build   => 'yes',
         docker  => 'yes',
         add     => {

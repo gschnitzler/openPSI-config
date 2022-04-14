@@ -4,7 +4,7 @@
         # this is a dummy package. only thing added at the moment is the etl user
         root    => './etl/base',
         scripts => './os/base/scripts',
-        from    => 'amp73_base',
+        from    => 'amp74_base',
         build   => 'yes',
         docker  => 'yes',
         add     => {
