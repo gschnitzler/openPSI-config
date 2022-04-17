@@ -21,7 +21,7 @@
             },
             '_default_meta' => {
                 CHMOD => '555',
-                LOCATION => '/usr/lib64/perl5/'
+                LOCATION => '/usr/lib64/perl5/am'
             },
         }
     }
