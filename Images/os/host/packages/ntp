@@ -3,6 +3,7 @@
 openntpd is a far saner implementation than ISC ntpd
 tradeoffs are neglectable
 best part is, no configuration needed. it works out of the box
+but it seems chrony is all the rage now
 
 #@flags
 
@@ -10,11 +11,13 @@ enabled=1
 
 #@package
 
-net-misc/openntpd
+#net-misc/openntpd
+net-misc/chrony
 
 #@post
 
-rc-update add ntpd default
+#rc-update add ntpd default
+rc-update add chronyd default
 # sync time now
-ntpd -q -g
+chronyd -q
 
