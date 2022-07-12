@@ -77,7 +77,7 @@ USE="-ipv6 -X -gtk -gnome -kde -qt4 -alsa -emacs -xemacs -systemd -cups -libress
 PYTHON_TARGETS="python3_10"
 PYTHON_SINGLE_TARGET="python3_10"
 # used for lsyncd
-LUA_SINGLE_TARGET="lua5-4"
+# LUA_SINGLE_TARGET="lua5-4"
 
 CURL_SSL="openssl"
 
