@@ -9,7 +9,7 @@
         # - a second root image would mean to issue 2 genesis build commands.
         #   kinda uncomely.
         from   => 'mariadb_galera',
-        build  => 'yes',
+        build  => 'no',
         docker => 'yes',
         add    => {
             portage => {

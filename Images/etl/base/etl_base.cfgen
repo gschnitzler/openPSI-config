@@ -5,7 +5,7 @@
         root    => './etl/base',
         scripts => './os/base/scripts',
         from    => 'amp74_base',
-        build   => 'yes',
+        build   => 'no',
         docker  => 'yes',
         add     => {
             portage => {
