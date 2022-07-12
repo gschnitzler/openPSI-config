@@ -74,10 +74,10 @@ USE="-ipv6 -X -gtk -gnome -kde -qt4 -alsa -emacs -xemacs -systemd -cups -libress
 # the dep packages often do not support all python 3 targets.
 # see https://wiki.gentoo.org/wiki/Project:Python/PYTHON_TARGETS
 # and https://www.gentoo.org/support/news-items/2020-04-22-python3-7.html
-PYTHON_TARGETS="python3_9"
-PYTHON_SINGLE_TARGET="python3_9"
+PYTHON_TARGETS="python3_10"
+PYTHON_SINGLE_TARGET="python3_10"
 # used for lsyncd
-LUA_SINGLE_TARGET="lua5-3"
+LUA_SINGLE_TARGET="lua5-4"
 
 CURL_SSL="openssl"
 
@@ -114,7 +114,10 @@ echo 'sys-apps/systemd' >> /etc/portage/package.mask/systemd
 ###################################
 
 echo "activating forwarding permanently..."
-sed -i 's/\(net.ipv4.ip_forward = \)0/\11/' /etc/sysctl.conf
+#sed -i 's/\(net.ipv4.ip_forward = \)0/\11/' /etc/sysctl.conf
+# seems like /etc/sysctl.conf is not in stage3 anymore. there is a file in /usr/share, but it has some questionable defaults.
+# might as well start a new file
+echo 'net.ipv4.ip_forward = 1' > /etc/sysctl.conf
 echo "# elasticsearch needs this to work properly" >> /etc/sysctl.conf
 echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 
@@ -125,7 +128,7 @@ sed -i 's/#\(rc_depend_strict=\)\"YES\"/\1\"NO\"/' /etc/rc.conf
 
 ###################################
 
-echo "disable systemds/udevs stupid behaviour of giving interfaces random names. why in the world would one want that?"
+echo "disable random interface names"
 touch /etc/udev/rules.d/80-net-setup-link.rules
 
 ###################################
