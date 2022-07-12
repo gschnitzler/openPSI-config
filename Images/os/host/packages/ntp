@@ -15,4 +15,6 @@ net-misc/openntpd
 #@post
 
 rc-update add ntpd default
+# sync time now
+ntpd -q -g
 
