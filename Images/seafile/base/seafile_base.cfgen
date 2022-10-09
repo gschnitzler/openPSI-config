@@ -2,7 +2,7 @@
     seafile_base => {
         root    => './seafile/base',
         scripts => './os/base/scripts',
-        from    => 'amp74_base',
+        from    => 'amp81_base',
         build   => 'yes',
         docker  => 'yes',
         add     => {
@@ -17,6 +17,15 @@
                 diff    => 1,
                 exclude => ['./var/db/repos/gentoo/*'],
 
+            },
+        },
+        groups => { seafile => '10501', },
+        users  => {
+            seafile => {
+                uid   => '10501',
+                gid   => '10501',
+                home  => '/home/seafile',
+                shell => '/bin/bash',
             },
         }
     }

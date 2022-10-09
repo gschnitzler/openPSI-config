@@ -1,5 +1,4 @@
 #@flags
-
 enabled=1
 
 #@package
@@ -12,51 +11,46 @@ dev-python/requests
 sys-libs/libselinux
 dev-python/python-memcached
 dev-python/wheel
-#net-misc/memcached
 dev-libs/libmemcached
+app-admin/pwgen
+
+#@pre
+echo "downloading seafile server..."
+mkdir -p /opt/seafile 
+cd /opt/seafile && wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_9.0.7_x86-64.tar.gz
+cd /opt/seafile && tar zfx *.tar.gz
+
+rm -rf /opt/seafile/*.tar.gz
+ln -s /opt/seafile/seafile-server* /opt/seafile/seafile-server-latest
+chown -R seafile.seafile /opt/seafile
+mkdir -p /home/seafile && chown seafile.seafile /home/seafile
+
 
 #@post group=10
-
-# seafile is hardcoded to python 3.6, but can work with newer versions. pip is hardwired to a version where it installs to aswell. last time this was 3.8, even though 3.9 was installed as well.
-# stick with 3.8
 # eselect python was decomissioned and is now read from the targets in the makefile.
 #eselect python set $(eselect python list | grep '3.8' | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
-ln -s /root/seafile/seafile/lib64/python3.6 /root/seafile/seafile/lib64/python3.8
+#ln -s /opt/seafile/seafile/lib64/python3.6 /opt/seafile/seafile/lib64/python3.8
 # --user is a gentoo requirement
-pip3 install --user --timeout=3600 Pillow pylibmc captcha jinja2 sqlalchemy psd-tools django-pylibmc django-simple-captcha  python3-ldap  future mysqlclient
-rm -rf /root/.cache/
-# keep the /root/.local/ dir. its where pip with --user installs to, and where seafile looks for it.
+# used cffi=1.14.6 instead of 1.14.0 as it contains fixes for a compile issue with python 3.10
+su - seafile -c 'pip3 install --user --timeout=3600 django==3.2.* future mysqlclient pymysql Pillow pylibmc captcha markupsafe==2.0.1 jinja2 sqlalchemy==1.4.3 psd-tools django-pylibmc django-simple-captcha pycryptodome==3.12.0 cffi==1.14.6 lxml'
+sed -i 's/1.14.0/1.14.6/' /opt/seafile/seafile-server-9.0.*/seahub/thirdpart/cffi/__init__.py
+rm -rf /home/seafile/.cache/
+# keep the /home/seafile/.local/ dir. its where pip with --user installs to, and where seafile looks for it.
 
-
-ln -s [% images.paths.CONFIG %]/seafile/conf /root/ccnet
-ln -s [% images.paths.CONFIG %]/seafile/conf /root/conf
-ln -s /root/seafile /root/seafile-server-latest
-ln -s [% images.paths.PERSISTENT %]/seahub-data /root/seahub-data
-ln -s [% images.paths.PERSISTENT %]/seafile /root/seafile-data
-ln -s [% images.paths.PERSISTENT %]/logs /root/logs
+ln -s [% images.paths.CONFIG %]/seafile/conf /opt/seafile/ccnet
+ln -s [% images.paths.CONFIG %]/seafile/conf /opt/seafile/conf
+ln -s [% images.paths.PERSISTENT %]/seahub-data /opt/seafile/seahub-data
+ln -s [% images.paths.PERSISTENT %]/seafile /opt/seafile/seafile-data
+ln -s [% images.paths.PERSISTENT %]/logs /opt/seafile/logs
 
 # seahub relies on seafile, but supervisord can not 'wait'
 # so wrap it up
-echo '#!/bin/bash' > /root/startup.sh
-echo 'export LANG=en_US.UTF-8' >> /root/startup.sh
-echo 'export LC_ALL=C' >> /root/startup.sh
-echo '/root/seafile/seafile.sh start' >> /root/startup.sh
-echo 'sleep 7'  >> /root/startup.sh
-# this used to accept a port. it still does, but its ignored. accepting the default of gunicorn.conf. redirect via proxy
-echo '/root/seafile/seahub.sh start' >> /root/startup.sh
-chmod u+x /root/startup.sh
-
-
-#@pre
-
-
-# switched over to seafile 7.1.x to escape python 2.7
-echo "downloading seafile server..."
-cd /root/ && wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_8.0.8_x86-64.tar.gz 
-cd /root/ && tar zfx *.tar.gz
-rm -rf /root/*.tar.gz
-mkdir -p /root/seafile && mv /root/seafile-server*/* /root/seafile
-rm -rf /root/seafile-server*
-
-
-
+#echo '#!/bin/bash' > /opt/seafile/startup.sh
+#echo 'export LANG=en_US.UTF-8' >> /opt/seafile/startup.sh
+#echo 'export LC_ALL=C' >> /opt/seafile/startup.sh
+#echo '/opt/seafile/seafile-server-latest/seafile.sh start' >> /opt/seafile/startup.sh
+#echo 'sleep 7'  >> /opt/seafile/startup.sh
+## this used to accept a port. it still does, but its ignored. accepting the default of gunicorn.conf. redirect via proxy
+#echo '/opt/seafile/seafile-server-latest/seahub.sh start' >> /opt/seafile/startup.sh
+#chmod u+x /opt/seafile/startup.sh
+chown -R seafile.seafile /opt/seafile
