@@ -42,6 +42,8 @@ my $entries    = {};
 my @neworder   = ();
 
 while ( my $line = <STDIN> ) {
+    line =~ s/\t.*//; # with version 18 they introduced this: https://github.com/rhboot/efibootmgr/commit/8ec3e9dedb3cb62f19847794012420b90f475398
+                      # bananas that they did not hide this behind a switch. RH is so full of it. so lets remove the added line noise. 
     my ( $key, @values ) = split /\s+/, $line;
     $key =~ s/://;
     next if $key eq 'Timeout';
