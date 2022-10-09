@@ -2,7 +2,7 @@
     mta_base => {
         root    => './mta/base',
         scripts => './os/base/scripts',
-        from    => 'amp74_base',
+        from    => 'amp81_base',
         build   => 'yes',
         docker  => 'yes',
         add     => {
