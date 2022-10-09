@@ -2,7 +2,7 @@
     amp_fbpdf => {
         root    => './amp/fbpdf',
         scripts => './os/base/scripts',
-        from    => 'amp74_base',
+        from    => 'amp81_base',
         build   => 'no',
         docker  => 'yes',
         add     => {

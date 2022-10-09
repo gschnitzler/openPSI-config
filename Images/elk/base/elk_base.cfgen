@@ -2,7 +2,7 @@
     elk_base => {
         root    => './elk/base',
         scripts => './os/base/scripts',
-        from    => 'amp74_base',
+        from    => 'amp81_base',
         build   => 'no',
         docker  => 'yes',
         add     => {

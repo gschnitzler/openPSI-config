@@ -1,6 +1,6 @@
 {   amp_athena => {
         root   => './amp/athena',
-        from   => 'amp74_base',
+        from   => 'amp81_base',
         build  => 'no',
         docker => 'yes',
 

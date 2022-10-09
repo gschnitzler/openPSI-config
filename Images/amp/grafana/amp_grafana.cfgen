@@ -2,7 +2,7 @@
     amp_grafana => {
         root    => './amp/grafana',
         scripts => './os/base/scripts',
-        from    => 'amp74_base',
+        from    => 'amp81_base',
         build   => 'no',
         docker  => 'yes',
         add     => {
