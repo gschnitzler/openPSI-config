@@ -1,0 +1,14 @@
+#@flags
+enabled=1
+
+#@package
+mail-filter/opendkim
+
+#@pre
+
+#@post
+mv /etc/opendkim /etc/opendkim.dist
+ln -s [% images.paths.CONFIG %]/opendkim /etc/opendkim
+mkdir -p /var/run/opendkim
+chown opendkim:opendkim /var/run/opendkim
+

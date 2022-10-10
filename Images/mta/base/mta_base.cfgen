@@ -24,8 +24,9 @@
             amavis   => '10102',
             dovenull => '10103',
             clamav   => '10121',
+            opendkim => '10122',
             postfix  => '10207',
-            postdrop => '10208'
+            postdrop => '10208',
         },
         users => {
             clamav => {
@@ -52,12 +53,19 @@
                 home  => '/dev/null',
                 shell => '/sbin/nologin',
             },
+            opendkim => {
+                uid   => '10122',
+                gid   => '10122',
+                home  => '/dev/null',
+                shell => '/sbin/nologin',
+            },
             postfix => {
                 uid   => '10207',
                 gid   => '10207',
                 home  => '/var/spool/postfix',
                 shell => '/sbin/nologin',
-            }
+            },
+
         }
     }
 };
