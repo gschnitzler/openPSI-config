@@ -1,0 +1,13 @@
+#@flags
+enabled=1
+
+#@package
+net-analyzer/fail2ban
+
+#@pre
+
+#@post
+rc-update add fail2ban default
+
+
+
