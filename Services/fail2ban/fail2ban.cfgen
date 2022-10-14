@@ -1,0 +1,7 @@
+{
+    fail2ban => {
+        REQUIRE   => ['network'],
+        TEMPLATES => './fail2ban/Templates',
+    }
+};
+

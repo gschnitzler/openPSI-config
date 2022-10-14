@@ -1,0 +1,15 @@
+{
+    './fail2ban.local' => {
+        LOCATION => '/etc/fail2ban/fail2ban.local',
+        CHMOD    => 440
+    },
+    './jail.local' => {
+        LOCATION => '/etc/fail2ban/jail.local',
+        CHMOD    => 440
+    },
+    './paths-overrides.local' => {
+        LOCATION => '/etc/fail2ban/paths-overrides.local',
+        CHMOD    => 440
+    },
+};
+

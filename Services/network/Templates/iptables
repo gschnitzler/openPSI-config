@@ -9,7 +9,6 @@
 :docker_pool - [0:0]
 [0:0] -A PREROUTING -j docker_pool
 
-
 COMMIT
 
 *filter
@@ -41,6 +40,8 @@ COMMIT
 :docker_pool - [0:0]
 :forward_docker - [0:0]
 
+# hooks for fail2ban
+:f2b - [0:0]
 
 ######################### bad_pkz ###################################
 
@@ -52,7 +53,7 @@ COMMIT
 [0:0] -A bad_pkz -p tcp -m tcp --dport 137 -j REJECT --reject-with tcp-rst
 [0:0] -A bad_pkz -p tcp -m tcp --dport 138 -j REJECT --reject-with tcp-rst
 [0:0] -A bad_pkz -p udp -m udp --dport 138 -j REJECT --reject-with icmp-port-unreach
-
+[0:0] -A bad_pkz -j f2b
 
 ######################### INPUT ###################################
 [0:0] -A INPUT -j bad_pkz

@@ -1,0 +1,133 @@
+[INCLUDES]
+before = paths-debian.local
+
+[DEFAULT]
+bantime.increment = true
+ignoreself = true
+ignoreip = 127.0.0.1/8 ::1
+bantime  = 60m
+findtime  = 60m
+maxretry = 3
+backend = pyinotify
+usedns = yes
+logencoding = auto
+destemail = tech@dotz.xyz
+sender = root@dotz.xyz
+chain = f2b
+banaction = iptables-multiport
+banaction_allports = iptables-allports
+action = %(action_)s
+
+[sshd]
+#mode   = normal
+port    = ssh
+logpath = %(sshd_log)s
+backend = %(sshd_backend)s
+enable = true
+
+[apache-auth]
+enable = true
+port     = http,https
+logpath  = %(apache_error_log)s
+
+[apache-badbots]
+enable = true
+port     = http,https
+logpath  = %(apache_access_log)s
+bantime  = 48h
+maxretry = 1
+
+[apache-noscript]
+enable = true
+port     = http,https
+logpath  = %(apache_error_log)s
+
+[apache-overflows]
+enable = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+[apache-nohome]
+enable = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+[apache-botsearch]
+enable = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+[apache-modsecurity]
+enable = true
+port     = http,https
+logpath  = %(apache_error_log)s
+maxretry = 2
+
+[apache-shellshock]
+enable = true
+port    = http,https
+logpath = %(apache_error_log)s
+maxretry = 1
+
+[php-url-fopen]
+enable = true
+port    = http,https
+logpath = %(nginx_access_log)s
+          %(apache_access_log)s
+
+[roundcube-auth]
+enable = true
+port     = http,https
+logpath  = %(roundcube_errors_log)s
+# Use following line in your jail.local if roundcube logs to journal.
+#backend = %(syslog_backend)s
+
+[postfix]
+enable = true
+# To use another modes set filter parameter "mode" in jail.local:
+mode    = more
+port    = smtp,465,submission
+logpath = %(postfix_log)s
+backend = %(postfix_backend)s
+
+[postfix-rbl]
+enable = true
+filter   = postfix[mode=rbl]
+port     = smtp,465,submission
+logpath  = %(postfix_log)s
+backend  = %(postfix_backend)s
+maxretry = 1
+
+[dovecot]
+enable = true
+port    = pop3,pop3s,imap,imaps,submission,465,sieve
+logpath = %(dovecot_log)s
+backend = %(dovecot_backend)s
+
+[sieve]
+enable = true
+port   = smtp,465,submission
+logpath = %(dovecot_log)s
+backend = %(dovecot_backend)s
+
+[postfix-sasl]
+enable = true
+filter   = postfix[mode=auth]
+port     = smtp,465,submission,imap,imaps,pop3,pop3s
+logpath  = %(postfix_log)s
+backend  = %(postfix_backend)s
+
+[pam-generic]
+enable = true
+# pam-generic filter can be customized to monitor specific subset of 'tty's
+banaction = %(banaction_allports)s
+logpath  = %(syslog_authpriv)s
+backend  = %(syslog_backend)s
+
+[grafana]
+port    = http,https
+logpath = /var/log/syslog
+

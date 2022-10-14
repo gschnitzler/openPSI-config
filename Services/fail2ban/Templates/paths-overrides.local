@@ -1,0 +1,16 @@
+[DEFAULT]
+syslog_authpriv = /var/log/auth.log
+syslog_local0 = /var/log/syslog
+syslog_ftp = /var/log/syslog
+syslog_daemon =  /var/log/syslog
+syslog_user = /var/log/syslog
+syslog_mail = /var/log/mail.log
+syslog_mail_warn = /var/log/mail.log
+postfix_log = /var/log/mail.log
+dovecot_log = /var/log/mail.log
+sshd_log = /var/log/auth.log
+apache_error_log = /var/log/syslog
+apache_access_log = /var/log/syslog
+mysql_log = /var/log/syslog
+roundcube_errors_log = /var/log/syslog
+
