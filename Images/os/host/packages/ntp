@@ -19,5 +19,5 @@ net-misc/chrony
 #rc-update add ntpd default
 rc-update add chronyd default
 # sync time now
-chronyd -q
+# chronyd -q
 
