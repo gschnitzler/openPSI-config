@@ -1,0 +1,21 @@
+#@flags
+enabled=1
+
+#@package
+dev-python/aiodns
+dev-python/aiohttp
+dev-python/pyyaml
+dev-python/pip
+
+#@pre
+
+echo "app-arch/brotli python" >> /etc/portage/package.use/postfix
+mkdir -p /home/mta-sts && chown mta-sts.mta-sts /home/mta-sts
+
+#@post
+
+su - mta-sts -c 'pip3 install --user postfix-mta-sts-resolver'
+rm -rf /home/mta-sts/.cache/
+
+#mv /etc/mta-sts-daemon.yml /etc/mta-sts-daemon.yml.dist
+ln -s [% images.paths.CONFIG %]/mta-sts-daemon.yml /etc/mta-sts-daemon.yml

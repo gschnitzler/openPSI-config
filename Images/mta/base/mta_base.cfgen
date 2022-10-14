@@ -20,13 +20,14 @@
             }
         },
         groups => {
-            vacation => '10101',
-            amavis   => '10102',
-            dovenull => '10103',
-            clamav   => '10121',
-            opendkim => '10122',
-            postfix  => '10207',
-            postdrop => '10208',
+            vacation  => 10101,
+            amavis    => 10102,
+            dovenull  => 10103,
+            clamav    => 10121,
+            opendkim  => 10122,
+            'mta-sts' => 10123,
+            postfix   => 10207,
+            postdrop  => 10208,
         },
         users => {
             clamav => {
@@ -59,13 +60,18 @@
                 home  => '/dev/null',
                 shell => '/sbin/nologin',
             },
+            'mta-sts' => {
+                uid   => '10123',
+                gid   => '10123',
+                home  => '/home/mta-sts',
+                shell => '/bin/bash',
+            },
             postfix => {
                 uid   => '10207',
                 gid   => '10207',
                 home  => '/var/spool/postfix',
                 shell => '/sbin/nologin',
             },
-
         }
     }
 };
