@@ -23,98 +23,92 @@ action = %(action_)s
 port    = ssh
 logpath = %(sshd_log)s
 backend = %(sshd_backend)s
-enable = true
+enabled = true
 
 [apache-auth]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
 
 [apache-badbots]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_access_log)s
 bantime  = 48h
 maxretry = 1
 
 [apache-noscript]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
 
 [apache-overflows]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 [apache-nohome]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 [apache-botsearch]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 [apache-modsecurity]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
 maxretry = 2
 
 [apache-shellshock]
-enable = true
+enabled = true
 port    = http,https
 logpath = %(apache_error_log)s
 maxretry = 1
 
 [php-url-fopen]
-enable = true
+enabled = true
 port    = http,https
 logpath = %(nginx_access_log)s
           %(apache_access_log)s
 
 [roundcube-auth]
-enable = true
+enabled = true
 port     = http,https
 logpath  = %(roundcube_errors_log)s
-# Use following line in your jail.local if roundcube logs to journal.
-#backend = %(syslog_backend)s
 
 [postfix]
-enable = true
+enabled = true
 # To use another modes set filter parameter "mode" in jail.local:
 mode    = more
 port    = smtp,465,submission
 logpath = %(postfix_log)s
-backend = %(postfix_backend)s
 
 [postfix-rbl]
-enable = true
+enabled = true
 filter   = postfix[mode=rbl]
 port     = smtp,465,submission
 logpath  = %(postfix_log)s
-backend  = %(postfix_backend)s
 maxretry = 1
 
 [dovecot]
-enable = true
+enabled = true
 port    = pop3,pop3s,imap,imaps,submission,465,sieve
 logpath = %(dovecot_log)s
-backend = %(dovecot_backend)s
 
 [sieve]
-enable = true
+enabled = true
 port   = smtp,465,submission
 logpath = %(dovecot_log)s
-backend = %(dovecot_backend)s
 
 [postfix-sasl]
-enable = true
+enabled = true
 filter   = postfix[mode=auth]
 port     = smtp,465,submission,imap,imaps,pop3,pop3s
 logpath  = %(postfix_log)s
@@ -128,6 +122,7 @@ logpath  = %(syslog_authpriv)s
 backend  = %(syslog_backend)s
 
 [grafana]
+enabled = true
 port    = http,https
 logpath = /var/log/syslog
 
