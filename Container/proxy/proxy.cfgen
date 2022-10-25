@@ -1,0 +1,33 @@
+{
+    'proxy' => {
+        production => {
+            CONFIG         => './proxy/config',
+            CONFIG_OVERLAY => './_overlay/supervisord ./_overlay/apache/base',
+            PRE_INIT       => './_overlay/apache/init',
+
+            # DNS            => { REGISTER => '' }, # dont add proxy to dns. this is middleware and could point to multiple hosts
+            NETWORK => {
+                INTERFACE => 'proxyprod',
+                IP        => { main => '60' },
+                FORWARD   => {
+                    http => {
+                        IPNAME => 'main',
+                        PROTO  => 'tcp',
+                        PORT   => '80',
+                    },
+                    https => {
+                        IPNAME => 'main',
+                        PROTO  => 'tcp',
+                        PORT   => '443',
+                    },
+                },
+            },
+            DOCKER => {
+                OPTS  => '',
+                IMAGE => 'amp81_base',
+            },
+            INHERIT => { http_proxy => 'yes', },
+            BACKUP  => { FOLDERS           => 'PERSISTENT', }
+        }
+    }
+};

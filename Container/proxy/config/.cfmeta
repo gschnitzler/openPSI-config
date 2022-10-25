@@ -1,0 +1,17 @@
+{
+    './'           => { CHMOD => 550 },
+    './start.conf' => {
+        CHMOD => 440,
+        UID   => 0,
+        GID   => 0
+    },
+    './apache/vhosts.d/*' => {
+        CHMOD => 440,
+    },
+    _default_meta => {
+        CHMOD => 750,
+        UID   => 81,
+        GID   => 81,
+    }
+}
+
