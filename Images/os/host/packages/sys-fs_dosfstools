@@ -1,0 +1,12 @@
+#@description
+
+used to check boot partition
+
+#@flags
+
+enabled=1
+
+#@package
+
+sys-fs/dosfstools
+
