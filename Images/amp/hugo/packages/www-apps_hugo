@@ -1,0 +1,13 @@
+#@flags
+
+enabled=1
+
+#@package
+www-apps/hugo
+
+#@pre
+
+echo "www-apps/hugo ~amd64" >> /etc/portage/package.accept_keywords/hugo
+
+#@post
+

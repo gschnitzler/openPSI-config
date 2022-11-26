@@ -58,7 +58,8 @@ cat > /etc/portage/make.conf << "EOF"
 # my own router (silvermont)
 #
 # silvermont lacks AVX and a lot more.
-# so the closest i found for the time beeing is westmere
+# so the closest i found for the time beeing is westmere.
+# Xeon D 1521 / Pentium D 1508 should set the minimum bar to haswell
 # still, this is way better than i686
 CFLAGS="-march=westmere -O2 -pipe"
 CXXFLAGS="${CFLAGS}"

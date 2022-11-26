@@ -1,0 +1,21 @@
+#@description
+
+# curl -X POST https://domain.tld/webhook/ -d@payload_mini.json
+# get the payload from a real github request
+# minify it with
+# python -c 'import json, sys;json.dump(json.load(sys.stdin), sys.stdout)' < /home/gschnitzler/payload.json
+
+
+#@flags
+
+enabled=0
+
+#@package
+# dev-perl/Mojolicious # installed via cpan in base for Cloudflare
+# dev-perl/CryptX # for Crypt::Digest::SHA256 . also pulled in via another package. acme?
+# Git # there is no gentoo package for Git, but its installed anyway
+
+#@pre
+
+#@post
+

@@ -1,0 +1,22 @@
+{
+    amp_hugo => {
+        root    => './amp/hugo',
+        scripts => './os/base/scripts',
+        from    => 'amp81_base',
+        build   => 'yes',
+        docker  => 'yes',
+        add     => {
+            portage => {
+                source => 'IMAGE:base_portage',
+                target => '/var/db/repos/gentoo'
+            }
+        },
+        export => {
+            amp_hugo => {
+                source  => '/',
+                diff    => 1,
+                exclude => ['./var/db/repos/gentoo/*'],
+            }
+        }
+    }
+};
