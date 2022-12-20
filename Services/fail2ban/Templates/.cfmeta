@@ -7,6 +7,10 @@
         LOCATION => '/etc/fail2ban/jail.local',
         CHMOD    => 440
     },
+    './empty.log' => {
+        LOCATION => '/etc/fail2ban/empty.log',
+        CHMOD    => 440
+    },
     './paths-overrides.local' => {
         LOCATION => '/etc/fail2ban/paths-overrides.local',
         CHMOD    => 440
