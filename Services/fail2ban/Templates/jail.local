@@ -22,6 +22,7 @@ action = %(action_)s
 #mode   = normal
 port    = ssh
 logpath = %(sshd_log)s
+            /etc/fail2ban/empty.log
 backend = %(sshd_backend)s
 enabled = true
 
@@ -29,11 +30,13 @@ enabled = true
 enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 
 [apache-badbots]
 enabled = true
 port     = http,https
 logpath  = %(apache_access_log)s
+            /etc/fail2ban/empty.log
 bantime  = 48h
 maxretry = 1
 
@@ -41,35 +44,41 @@ maxretry = 1
 enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 
 [apache-overflows]
 enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 maxretry = 2
 
 [apache-nohome]
 enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 maxretry = 2
 
 [apache-botsearch]
 enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 maxretry = 2
 
 [apache-modsecurity]
 enabled = true
 port     = http,https
 logpath  = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 maxretry = 2
 
 [apache-shellshock]
 enabled = true
 port    = http,https
 logpath = %(apache_error_log)s
+            /etc/fail2ban/empty.log
 maxretry = 1
 
 [php-url-fopen]
@@ -77,11 +86,13 @@ enabled = true
 port    = http,https
 logpath = %(nginx_access_log)s
           %(apache_access_log)s
+            /etc/fail2ban/empty.log
 
 [roundcube-auth]
 enabled = true
 port     = http,https
 logpath  = %(roundcube_errors_log)s
+            /etc/fail2ban/empty.log
 
 [postfix]
 enabled = true
@@ -124,10 +135,12 @@ enable = true
 # pam-generic filter can be customized to monitor specific subset of 'tty's
 banaction = %(banaction_allports)s
 logpath  = %(syslog_authpriv)s
+            /etc/fail2ban/empty.log
 backend  = %(syslog_backend)s
 
 [grafana]
 enabled = true
 port    = http,https
 logpath = /var/log/syslog
+            /etc/fail2ban/empty.log
 

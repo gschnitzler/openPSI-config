@@ -1,2 +1,3 @@
 # this file is used to trick fail2ban to not die on startup when logfiles dont exist.
 # example: not every host has an MTA configured, so fail2ban does not start.
+# Also, after a node update, syslog might not have had time to start logging

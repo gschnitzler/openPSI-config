@@ -9,7 +9,7 @@ dbpurgeage = 1d
 dbmaxmatches = 10
 
 [Definition]
-
+allowipv6 = no # a warning is issues otherwise
 
 [Thread]
 
