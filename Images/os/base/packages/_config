@@ -53,15 +53,16 @@ sed -i "s/\(alias ls='ls\)/\1 --group-directories-first/" /etc/bash/bashrc
 echo "configuring portage..."
 cat > /etc/portage/make.conf << "EOF"
 # several architectures have to be supported.
-# dev notebooks (assume at least haswell)
-# hetzner servers (at least haswell or epic1)
-# my own router (silvermont)
-#
-# silvermont lacks AVX and a lot more.
-# so the closest i found for the time beeing is westmere.
-# Xeon D 1521 / Pentium D 1508 should set the minimum bar to haswell
-# still, this is way better than i686
-CFLAGS="-march=westmere -O2 -pipe"
+# notebooks/workstations (currently amd zen2)
+# servers (currently amd zen2)
+# routers (currently Xeon D 1521 / Pentium D 1508 broadwell)
+# dropping westmere support, and having finally access to AVX and POPCNT is a huge step.
+# sadly, CPU architectures have diverged greatly between intel and amd in the meantime. 
+# intel dropping the ball here with the removal of their holy avx512 in last gen, now that amd finally supports that.
+# this also renders x86-64-v4 moot and well... anyway i am too old to care anymore.
+# https://www.phoronix.com/news/GCC-11-x86-64-Feature-Levels
+# only way forward after v3 is sticking to one vendor. And that one shall be AMD. Because fuck you Intel.
+CFLAGS="-march=x86-64-v3 -O2 -pipe"
 CXXFLAGS="${CFLAGS}"
 CHOST="x86_64-pc-linux-gnu"
 # audit USE flag is used for the audit kernel subsystem.
@@ -89,7 +90,7 @@ ACCEPT_KEYWORDS="amd64"
 GRUB_PLATFORMS="efi-64"
 EMERGE_DEFAULT_OPTS="--keep-going=y --jobs=28 --load-average=28.00" # number of (HT)
 PORT_LOGDIR="/var/log/portage"
-FEATURES="${FEATURES} parallel-fetch parallel-install sandbox candy xattr"
+FEATURES="${FEATURES} parallel-install candy"
 # countdown of unmerge
 CLEAN_DELAY="0"
 EOF
@@ -101,8 +102,8 @@ cp -f /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
 # create base dirs. seems they are not supplied anymore
 mkdir -p /etc/portage/package.mask
 
-# let portage use python3 (speedup)
-echo "sys-apps/portage python3" >> /etc/portage/package.use/portage
+# let portage use python3 (speedup), seems obsolete
+# echo "sys-apps/portage python3" >> /etc/portage/package.use/portage
 # some package try to pull in stuff we dont want
 echo 'app-editors/xemacs' >> /etc/portage/package.mask/xemacs
 echo 'app-xemacs/*' >> /etc/portage/package.mask/xemacs
