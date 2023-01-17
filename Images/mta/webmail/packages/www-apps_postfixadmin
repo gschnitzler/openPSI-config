@@ -8,10 +8,11 @@ www-apps/postfixadmin
 
 #@post
 
-ln -s [% images.paths.CONFIG %]/postfixadmin-config.local.php /var/www/localhost/htdocs/postfixadmin/config.local.php
+
+# ln -s [% images.paths.CONFIG %]/postfixadmin-config.local.php /var/www/localhost/htdocs/postfixadmin/config.local.php
 # smarty cache
-rm -rf /var/www/localhost/htdocs/postfixadmin/templates_c
-ln -s [% images.paths.PERSISTENT %]/postfixadmin/templates_c /var/www/localhost/htdocs/postfixadmin/templates_c
+# rm -rf /var/www/localhost/htdocs/postfixadmin/templates_c
+# ln -s [% images.paths.PERSISTENT %]/postfixadmin/templates_c /var/www/localhost/htdocs/postfixadmin/templates_c
 
 # so i am not sure if postfixadmin or roundcube did this, but one of the packages removed (or rather copied it to /etc/vhosts.backup.0000) 
 # the vhosts symlink made in mta_base.
