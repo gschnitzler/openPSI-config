@@ -18,13 +18,22 @@ banaction = iptables-multiport
 banaction_allports = iptables-allports
 action = %(action_)s
 
+
+[strongswan_ikev2]
+enabled = true
+port = 500,4500
+protocol = udp
+filter = strongswan_ikev2
+logpath = %(syslog_daemon)s
+            /etc/fail2ban/empty.log
+
 [sshd]
-#mode   = normal
-port    = ssh
+enabled = true
+mode   = normal
+port    = ssh,1022,1222
 logpath = %(sshd_log)s
             /etc/fail2ban/empty.log
 backend = %(sshd_backend)s
-enabled = true
 
 [apache-auth]
 enabled = true

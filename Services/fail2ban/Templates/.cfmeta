@@ -15,5 +15,9 @@
         LOCATION => '/etc/fail2ban/paths-overrides.local',
         CHMOD    => 440
     },
+    './strongswan_ikev2.conf' => {
+        LOCATION => '/etc/fail2ban/filter.d/strongswan_ikev2.conf',
+        CHMOD    => 440
+    },
 };
 
