@@ -18,6 +18,11 @@ banaction = iptables-multiport
 banaction_allports = iptables-allports
 action = %(action_)s
 
+[iptables]
+enabled = true
+filter = iptables
+logpath = /var/log/kern.log
+            /etc/fail2ban/empty.log
 
 [strongswan_ikev2]
 enabled = true

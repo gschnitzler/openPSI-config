@@ -19,5 +19,9 @@
         LOCATION => '/etc/fail2ban/filter.d/strongswan_ikev2.conf',
         CHMOD    => 440
     },
+    './iptables.conf' => {
+        LOCATION => '/etc/fail2ban/filter.d/iptables.conf',
+        CHMOD    => 440
+    },
 };
 
