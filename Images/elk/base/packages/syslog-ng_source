@@ -8,7 +8,7 @@ dev-java/gradle-bin
 
 #@pre
 
-echo dev-java/gradle-bin ~amd64 >> /etc/portage/package.accept_keywords
+# echo dev-java/gradle-bin ~amd64 >> /etc/portage/package.accept_keywords
 
 # elasticsearch needs to be in place first
 #@post group=20

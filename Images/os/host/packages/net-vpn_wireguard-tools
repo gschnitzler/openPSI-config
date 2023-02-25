@@ -1,0 +1,11 @@
+#@description
+
+#@flags
+enabled=1
+
+#@package
+net-vpn/wireguard-tools
+
+#@pre
+echo "net-vpn/wireguard-tools wg-quick" >> /etc/portage/package.use/wireguard
+#@post

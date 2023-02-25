@@ -21,7 +21,7 @@ ln -s [% images.paths.CONFIG %]/php/ /etc/
 echo PHP_INI_VERSION=\"production\" >> /etc/portage/make.conf
 echo PHP_TARGETS=\"php8-1\"  >> /etc/portage/make.conf
 
-# lock to 7.4
+# lock to 8.1
 echo ">=dev-lang/php-8.2.0" >> /etc/portage/package.mask/php81
 
 # imap is a webmail dep
