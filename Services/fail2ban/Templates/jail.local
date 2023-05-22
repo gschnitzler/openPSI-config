@@ -4,7 +4,9 @@ before = paths-debian.local
 [DEFAULT]
 bantime.increment = true
 ignoreself = true
-ignoreip = 127.0.0.1/8 ::1
+ignoreip = 127.0.0.1/8 ::1 10.0.0.0/8 192.168.0.0/16 172.16.0.0/12 # well, listing all internal networks explicitly (containers, cluster nodes, ipsec/wireguard, network zones, vlans and whatnot) with selective 'bad'
+                                                                   # ranges misses the point. it being the reduction of log noise, not 'security'. Banning internal IPs just leads to hard to diagnose problems down the line.
+                                                                   # To selectively allow stuff and identify bad actors, use iptables, monitoring (with an optional IDS) 
 bantime  = 60m
 findtime  = 60m
 maxretry = 3
