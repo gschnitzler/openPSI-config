@@ -14,7 +14,7 @@ mkdir -p /home/mta-sts && chown mta-sts.mta-sts /home/mta-sts
 
 #@post
 
-su - mta-sts -c 'pip3 install --user postfix-mta-sts-resolver'
+su - mta-sts -c 'pip3 install --break-system-packages --user postfix-mta-sts-resolver'
 rm -rf /home/mta-sts/.cache/
 
 #mv /etc/mta-sts-daemon.yml /etc/mta-sts-daemon.yml.dist
