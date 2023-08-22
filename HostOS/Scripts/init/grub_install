@@ -74,6 +74,14 @@ EOF
 chmod u+x /tmp/correct_bootorder
 
 grub-install --target=x86_64-efi --efi-directory=/boot
+# if something like this happens:
+# EFI variables are not supported on this system.
+# grub-install: error: efibootmgr failed to register the boot entry: No such file or directory.
+# it might be that the efivarfs is not mounted by the live system. 
+# on the host (outside chroot), check if the dir /sys/firmware/efi/efivars is empty.
+# try modprobing efivarfs and manual mount via
+# mount -t efivarfs none /sys/firmware/efi/efivars
+
 efibootmgr | /tmp/correct_bootorder '[% machine.self.RAID.BOOT_FIRST %]' | xargs efibootmgr --bootorder
 rm -f /tmp/correct_bootorder
 #[% IF machine.self.RAID.LEVEL != 'raidS' %]
