@@ -1,0 +1,12 @@
+#@description
+ECC monitoring
+
+#@flags
+enabled=1
+
+#@package
+app-admin/rasdaemon
+
+#@post
+rc-update add rasdaemon default
+#@pre
