@@ -8,21 +8,15 @@ dev-java/gradle-bin
 
 #@pre
 
-# echo dev-java/gradle-bin ~amd64 >> /etc/portage/package.accept_keywords
-
 # elasticsearch needs to be in place first
 #@post group=20
-
-# get compatible gradle version
-# cd /root && wget https://services.gradle.org/distributions/gradle-2.2-bin.zip
-# cd /root && unzip gradle-2.2-bin.zip
-# ln -s /root/gradle-2.2/bin/gradle /usr/bin/gradle
 
 # latest version of gradle package had no symlink set. fix
 if [ "$(which gradle)" = "" ]; then ln -s /usr/bin/gradle* /usr/bin/gradle; fi
 
 # syslog git master lacks configure scripts, so only release versions do
-cd /root && wget https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.22.1/syslog-ng-3.22.1.tar.gz
+exit 1 # removed downloadmanager ( w g e t ) below
+cd /root && https://github.com/balabit/syslog-ng/releases/download/syslog-ng-3.22.1/syslog-ng-3.22.1.tar.gz
 cd /root && tar xf syslog-ng-*.tar.gz
 
 # add java includes
