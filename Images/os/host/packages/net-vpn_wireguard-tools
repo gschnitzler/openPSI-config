@@ -7,5 +7,7 @@ enabled=1
 net-vpn/wireguard-tools
 
 #@pre
-echo "net-vpn/wireguard-tools wg-quick" >> /etc/portage/package.use/wireguard
+# use netifrc instead of wg-wuick to avoid messing with resolv.conf: https://wiki.gentoo.org/wiki/WireGuard#netifrc
+echo "net-vpn/wireguard-tools -wg-quick" >> /etc/portage/package.use/wireguard
+
 #@post

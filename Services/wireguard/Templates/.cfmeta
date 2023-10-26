@@ -1,0 +1,8 @@
+{
+    './wg.conf' => {
+        LOCATION => '/etc/wireguard/wg0.conf',
+        CHMOD    => 600
+    },
+};
+
+
