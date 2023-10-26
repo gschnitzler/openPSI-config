@@ -15,8 +15,8 @@ rm -rf /boot/dracut*
 ln -s /lib/modules/$(ls /lib/modules/ | head -n1) /lib/modules/$(uname -r)
 # dracut now takes some time to gzip the kernel modules
 # --early-microcode is used to load microcode updates
-dracut --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system1" /boot/dracut-system1.img
-dracut --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system2" /boot/dracut-system2.img
+dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system1" /boot/dracut-system1.img
+dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system2" /boot/dracut-system2.img
 
 #@pre
 
