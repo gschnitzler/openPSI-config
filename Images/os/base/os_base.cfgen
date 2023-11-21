@@ -7,7 +7,6 @@
         # the problem is, that the buildmanager can not determine if a tar archive in the image folder is recent or not.
         # so os_base has to be build solo. the 'bootstrap' option below ensures that, among other things.
         # this then forces that os_host can not be build at the same time as mariadb_galera. (which is desired behaviour)
-        #
 
         # a possible solution: at image tree generation, for every source image, delete any image with the same tag (build and add).
         # now we could wait for that image to appear and continue.
@@ -25,14 +24,11 @@
         add       => {
             'stage3-amd64-hardened-nomultilib-openrc' => {
                 source =>
-                # dresden seems to have problems for half a year now. hannover is very slow (1mb/s) try another mirror
-#'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
-'ftp://ftp.uni-hannover.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
-                  target => '/'
+'ftp://ftp.fau.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
+                target => '/'
             },
 
-            # i think this is not required anymore
-            #portage => {
+            #portage => { # not required anymore
             #    source => 'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/gentoo/releases/snapshots/current/portage-latest.tar.bz2',
             #    target => '/usr'
             #}
