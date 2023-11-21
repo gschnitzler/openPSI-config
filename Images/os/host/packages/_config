@@ -35,9 +35,9 @@ elif [ ! "$(ls -A [% paths.psi.GENESIS %]/ )" ]; then
 	image=$(ls [% paths.data.IMAGES %]/genesis_* | sort -rn | head -n 1);
     	# some copy implementations are broken and dont support -f
     	rm -f [% paths.data.ROOT %]/genesis.img*
-	cp $image [% paths.data.ROOT %]/genesis.img.xz;
+	cp $image [% paths.data.ROOT %]/genesis.img.zst;
 	cd [% paths.data.ROOT %];
-	xz -d genesis.img.xz;
+	zstd -qd genesis.img.zst;
 	chmod 400 genesis.img;
 	mount -r genesis.img [% paths.psi.ROOT %];
 fi

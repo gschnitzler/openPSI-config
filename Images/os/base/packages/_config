@@ -83,8 +83,12 @@ PYTHON_SINGLE_TARGET="python3_11"
 
 CURL_SSL="openssl"
 
+PORTAGE_COMPRESS="zstd"
+BINPKG_COMPRESS="zstd"
+BINPKG_COMPRESS_FLAGS_ZSTD="-T0 -6"
+
 # might be a good idea to put cores and gentoo mirrors into config
-GENTOO_MIRRORS="https://mirror.netcologne.de/gentoo/ https://de-mirror.org/gentoo/"
+GENTOO_MIRRORS="https://ftp.fau.de/gentoo https://de-mirror.org/gentoo/"
 MAKEOPTS="-j28 -l28" # number of cores of the build system (including HT)
 ACCEPT_KEYWORDS="amd64"
 GRUB_PLATFORMS="efi-64"

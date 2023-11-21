@@ -4,8 +4,8 @@ echo "updating genesis using  $(ls [% paths.data.IMAGES %]/genesis_* | sort -rn 
 cd / && umount -lf [% paths.psi.ROOT %]
 
 rm -f [% paths.data.ROOT %]/genesis.img*
-cp  $(ls [% paths.data.IMAGES %]/genesis_* | sort -rn | head -n 1)  [% paths.data.ROOT %]/genesis.img.xz;
-cd [% paths.data.ROOT %] && xz -d genesis.img.xz && chmod 400 genesis.img
+cp  $(ls [% paths.data.IMAGES %]/genesis_* | sort -rn | head -n 1)  [% paths.data.ROOT %]/genesis.img.zst;
+cd [% paths.data.ROOT %] && zstd -qd genesis.img.zst && chmod 400 genesis.img
 mount [% paths.data.ROOT %]/genesis.img [% paths.psi.ROOT %];
 
 echo "update complete. restart genesis"
