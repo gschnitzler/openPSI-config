@@ -26,6 +26,10 @@ cat > /etc/cron.monthly/btrfs_maintenance << "EOF"
 /bin/sync
 /sbin/fstrim --verbose /
 
+# This should possibly be run on its own, or even better during startup
+# Only DISK1 is ever used/mounted
+fsck.fat -a [% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]2
+
 EOF
 
 chmod a+rx /etc/cron.monthly/btrfs_maintenance

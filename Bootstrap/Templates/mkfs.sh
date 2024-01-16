@@ -20,7 +20,7 @@ parted -s -a optimal [% machine.self.RAID.DISK1 %] name 1 grub > /dev/null
 parted -s -a optimal [% machine.self.RAID.DISK1 %] set 1 bios_grub on > /dev/null
 # efi boot partition for later use
 parted -s -a optimal [% machine.self.RAID.DISK1 %] mkpart primary 3 131 > /dev/null
-parted -s -a optimal [% machine.self.RAID.DISK1 %] name 2 boot > /dev/null
+parted -s -a optimal [% machine.self.RAID.DISK1 %] name 2 boot_disk1 > /dev/null
 parted -s -a optimal [% machine.self.RAID.DISK1 %] set 2 boot on > /dev/null
 # system
 parted -s -a optimal [% machine.self.RAID.DISK1 %] mkpart primary 131 100% > /dev/null
@@ -38,7 +38,7 @@ parted -s -a optimal [% machine.self.RAID.DISK2 %] name 1 grub > /dev/null
 parted -s -a optimal [% machine.self.RAID.DISK2 %] set 1 bios_grub on > /dev/null
 # efi boot partition for later use
 parted -s -a optimal [% machine.self.RAID.DISK2 %] mkpart primary 3 131 > /dev/null
-parted -s -a optimal [% machine.self.RAID.DISK2 %] name 2 boot > /dev/null
+parted -s -a optimal [% machine.self.RAID.DISK2 %] name 2 boot_disk2 > /dev/null
 parted -s -a optimal [% machine.self.RAID.DISK2 %] set 2 boot on > /dev/null
 # system
 parted -s -a optimal [% machine.self.RAID.DISK2 %] mkpart primary 131 100% > /dev/null
@@ -52,7 +52,7 @@ mount  [% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvm
 
 [% IF machine.self.RAID.LEVEL != 'raidS' %]
 # only do that in raidmodes
-btrfs device add -f [% machine.self.RAID.DISK2 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 [% paths.hostos.MOUNT %]
+btrfs device add -f [% machine.self.RAID.DISK2 %][% 'p' IF machine.self.RAID.DISK2.match('nvme') %]3 [% paths.hostos.MOUNT %]
 btrfs balance start -f -dconvert=[% machine.self.RAID.LEVEL %] -mconvert=[% machine.self.RAID.LEVEL %] [% paths.hostos.MOUNT %]
 [% END %]
 
