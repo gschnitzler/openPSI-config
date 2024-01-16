@@ -4,5 +4,5 @@ enabled=1
 
 #@package
 
-mlocate
+sys-apps/pciutils
 
