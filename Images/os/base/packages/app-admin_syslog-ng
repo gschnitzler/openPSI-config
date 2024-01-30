@@ -10,8 +10,9 @@ app-admin/logrotate
 #@post
 
 # install defaults
-bzcat /usr/share/doc/syslog-ng-*/syslog-ng.conf.gentoo.hardened.bz2 > /etc/syslog-ng/syslog-ng.conf
-bzcat /usr/share/doc/syslog-ng-*/syslog-ng.logrotate.hardened.bz2 > /etc/logrotate.d/syslog-ng
+zstdcat /usr/share/doc/syslog-ng-*/syslog-ng.conf.gentoo.hardened.zst > /etc/syslog-ng/syslog-ng.conf
+zstdcat /usr/share/doc/syslog-ng-*/syslog-ng.logrotate.hardened.zst > /etc/logrotate.d/syslog-ng
+
 # messages logfile got dropped, so don't rotate
 sed -i 's#messages\ {#messages\ {\n    missingok#' /etc/logrotate.d/syslog-ng
 # since syslog is configured to send logs offshore, boot it up after network. otherwise it might fail on boot occasionally

@@ -37,7 +37,7 @@ elif [ ! "$(ls -A [% paths.psi.GENESIS %]/ )" ]; then
     	rm -f [% paths.data.ROOT %]/genesis.img*
 	cp $image [% paths.data.ROOT %]/genesis.img.zst;
 	cd [% paths.data.ROOT %];
-	zstd -qd genesis.img.zst;
+	zstd --rm -qd genesis.img.zst;
 	chmod 400 genesis.img;
 	mount -r genesis.img [% paths.psi.ROOT %];
 fi
