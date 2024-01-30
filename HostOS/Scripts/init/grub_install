@@ -1,5 +1,5 @@
 #!/bin/bash
-
+exit 1 # dont use grub
 #echo "initializing btrfs raid"
 
 # btrfs will die with a strange error if a filesystem is mounted in, so we have to unmount genesis and remount it afterwards
@@ -73,7 +73,7 @@ print join( ',', @neworder ), "\n";
 EOF
 chmod u+x /tmp/correct_bootorder
 
-grub-install --target=x86_64-efi --efi-directory=/boot
+#grub-install --target=x86_64-efi --efi-directory=/boot
 # if something like this happens:
 # EFI variables are not supported on this system.
 # grub-install: error: efibootmgr failed to register the boot entry: No such file or directory.

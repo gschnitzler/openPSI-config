@@ -1,0 +1,10 @@
+#@description
+#@flags
+enabled=1
+
+#@package
+sys-boot/efibootmgr
+
+#@post
+
+

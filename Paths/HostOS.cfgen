@@ -1,5 +1,5 @@
 {   hostos => {
-        GRUB         => '/boot/grub/grub.cfg',
+        #GRUB         => '/boot/grub/grub.cfg',
         FSTAB        => '/etc/fstab',
         PKGVERSION   => '/etc/pkg-version',
         RELEASE      => '/etc/genesis-release',

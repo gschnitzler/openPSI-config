@@ -1,0 +1,15 @@
+#@flags
+enabled=1
+
+#@package
+sys-apps/systemd-utils
+
+#@pre
+echo "sys-apps/systemd-utils boot kernel-install" > /etc/portage/package.use/systemd-utils
+
+#@post
+cat > /etc/kernel/install.conf << "EOF"
+layout=uki
+uki_generator=dracut
+initrd_generator=dracut
+EOF

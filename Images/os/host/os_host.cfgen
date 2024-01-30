@@ -17,19 +17,22 @@
             }
         },
         export => {
-            boot => {
-                source  => '/boot/',
-                diff    => 0,
-                exclude => [
-                    #
-                    './lost+found/*',
-                    './lilo.conf',
-                    './grub*',
-                    './initramfs*',
-                    './EFI'
-                ],
-
-            },
+            #boot => {
+            #    source  => '/boot/',
+            #    diff    => 0,
+            #    exclude => [
+            #        #
+            #        './lost+found/*',
+            #        './lilo.conf',
+            #        './grub*',
+            #        './initramfs*',
+            #        './dracut-*',
+            #        './System.map*',
+            #        './kernel-*',
+            #        '/grub/',
+            #        #'./EFI'
+            #    ],
+            #},
             hostos => {
                 source  => '/',
                 diff    => 0,

@@ -8,15 +8,18 @@ sys-kernel/dracut
 
 #@post group=15
 
-echo "creating initramfs"
-rm -rf /boot/dracut*
+#echo "creating initramfs"
 # newer version of dracut detects the running kernel and tries to use that kernels modules
 # this tricks it into using the right ones
-ln -s /lib/modules/$(ls /lib/modules/ | head -n1) /lib/modules/$(uname -r)
+#ln -s /lib/modules/$(ls /lib/modules/ | head -n1) /lib/modules/$(uname -r)
+#mkdir -p /boot/EFI/gentoo 
+
 # dracut now takes some time to zip the kernel modules
 # --early-microcode is used to load microcode updates
-dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system1" /boot/dracut-system1.img
-dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system2" /boot/dracut-system2.img
+#dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system1" /boot/dracut-system1.img
+#dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system2" /boot/dracut-system2.img
+#dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system1" --kernel-cmdline "root=[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 net.ifnames=0 ipv6.disable=1 ro rootflags=degraded,device=[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3,[% IF machine.self.RAID.LEVEL != 'raidS' %]device=[% machine.self.RAID.DISK2 %][% 'p' IF machine.self.RAID.DISK2.match('nvme') %]3,[% END %]subvol=system1" --kernel-image /usr/src/linux/arch/x86_64/boot/bzImage /boot/EFI/gentoo/system1.efi --uefi 
+#dracut --zstd --early-microcode -m "btrfs base rootfs-block kernel-modules fs-lib img-lib usrmount udev-rules i18n" --force --mount "[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 / btrfs subvol=system2" --kernel-cmdline "root=[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3 net.ifnames=0 ipv6.disable=1 ro rootflags=degraded,device=[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3,[% IF machine.self.RAID.LEVEL != 'raidS' %]device=[% machine.self.RAID.DISK2 %][% 'p' IF machine.self.RAID.DISK2.match('nvme') %]3,[% END %]subvol=system2" --kernel-image /usr/src/linux/arch/x86_64/boot/bzImage /boot/EFI/gentoo/system2.efi --uefi 
 
 #@pre
 
