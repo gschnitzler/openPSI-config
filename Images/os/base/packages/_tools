@@ -1,0 +1,21 @@
+#@description
+Collection of basic tools 
+
+#@flags
+enabled=1
+
+#@package
+app-portage/gentoolkit
+app-arch/zstd
+dev-debug/strace
+net-analyzer/nmap
+net-analyzer/netcat
+net-analyzer/tcpdump
+net-dns/bind-tools
+net-ftp/lftp
+net-misc/telnet-bsd
+net-misc/curl
+sys-apps/iproute2
+sys-process/htop
+sys-process/lsof
+www-client/links

@@ -1,13 +1,10 @@
 #@description
-
-used for 2factor
+used for 2FA
 
 #@flags
-
 enabled=1
 
 #@package
-
 media-gfx/qrencode
 sys-auth/google-authenticator
 

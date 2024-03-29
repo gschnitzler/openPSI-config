@@ -3,11 +3,9 @@
 used by SSH::Deploy and SSH::Remote 
 
 #@flags
-
 enabled=1
 
 #@package
-
 net-misc/sshpass
 
 #@post

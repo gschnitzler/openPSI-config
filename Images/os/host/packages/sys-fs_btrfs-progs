@@ -1,9 +1,7 @@
 #@flags
-
 enabled=1
 
 #@package
-
 sys-fs/btrfs-progs
 
 #@pre
@@ -28,7 +26,9 @@ cat > /etc/cron.monthly/btrfs_maintenance << "EOF"
 
 # This should possibly be run on its own, or even better during startup
 # Only DISK1 is ever used/mounted
-fsck.fat -a [% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]2
+# fsck.fat -a [% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]2
+# resolving disks on the buildhost does obviously not work for all systems, so:
+for i in $(ls /dev/sd?2 /dev/nvme?n1p2 2>/dev/null); do fsck.fat -a $i; done
 
 EOF
 

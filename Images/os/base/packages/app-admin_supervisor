@@ -3,9 +3,3 @@ enabled=1
 
 #@package
 app-admin/supervisor
-
-#@pre
-
-#@post
-
-

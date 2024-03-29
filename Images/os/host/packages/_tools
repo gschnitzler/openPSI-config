@@ -1,0 +1,15 @@
+#@description
+Collection of basic tools 
+
+#@flags
+enabled=1
+
+#@package
+sys-apps/lshw
+sys-apps/mlocate
+sys-apps/nvme-cli
+sys-apps/pciutils
+sys-apps/smartmontools
+sys-block/parted
+sys-boot/efibootmgr
+sys-fs/dosfstools

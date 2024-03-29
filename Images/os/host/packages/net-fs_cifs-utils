@@ -1,13 +1,10 @@
 #@description
-
 used for shared folders on op machines
 
 #@flags
-
 enabled=1
 
 #@package
-
 net-fs/cifs-utils
 
 #@post

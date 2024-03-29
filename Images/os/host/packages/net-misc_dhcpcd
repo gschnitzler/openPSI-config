@@ -3,11 +3,9 @@
 used for network on dynamic lines
 
 #@flags
-
 enabled=1
 
 #@package
-
 net-misc/dhcpcd
 
 #@post

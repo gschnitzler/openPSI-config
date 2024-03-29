@@ -6,16 +6,8 @@ Seeing that more and more go apps are creeping in,
 go was relocated to base
 
 #@flags
-
 enabled=1
 
 #@package
-
 dev-lang/go
-
-#@pre
-
-#@post
-
-
 

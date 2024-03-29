@@ -3,11 +3,9 @@
 used as password store in the infrastructure repo
 
 #@flags
-
 enabled=1
 
 #@package
-
 app-admin/pass
 
 #@post

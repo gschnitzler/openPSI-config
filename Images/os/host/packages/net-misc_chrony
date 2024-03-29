@@ -6,7 +6,6 @@ best part is, no configuration needed. it works out of the box
 but it seems chrony is all the rage now
 
 #@flags
-
 enabled=1
 
 #@package

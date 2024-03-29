@@ -1,9 +1,7 @@
 #@flags
-
 enabled=1
 
 #@package
-
 sys-kernel/dracut
 
 #@post group=15

@@ -1,12 +1,9 @@
 #@description
-
 used also for building
 
 #@flags
-
 enabled=1
 
 #@package
-
 app-misc/tmux
 

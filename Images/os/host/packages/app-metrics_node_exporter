@@ -3,11 +3,9 @@
 collects host metrics for prometheus monitor
 
 #@flags
-
 enabled=1
 
 #@package
-
 app-metrics/node_exporter
 
 #@post
