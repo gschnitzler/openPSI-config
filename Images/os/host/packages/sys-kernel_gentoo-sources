@@ -42,10 +42,10 @@ mkdir -p /usr/kernel # keep kernel in hostos image, generate UKI on each machine
 #$block start
 version="`cat /usr/src/linux/.config | head | grep "Kernel Configuration" | sed -e 's/.* \([^ ]\+gentoo[^\ ]*\) .*/\1/'`-x86_64"
 tag=`date +%y%m%d%H`
-cp /usr/src/linux/arch/x86/boot/bzImage /usr/kernel/kernel-metal-${tag}-${version}
-cp /usr/src/linux/System.map /usr/kernel/System.map-metal-${tag}-${version}
+cp /usr/src/linux/arch/x86/boot/bzImage /usr/kernel/kernel-metal-${tag}-${version} || exit 1
+cp /usr/src/linux/System.map /usr/kernel/System.map-metal-${tag}-${version}  || exit 1
 # this is to save the config for reintegration. could be done via 'zcat /proc/config.gz'
-cp -f /usr/src/linux/.config /usr/kernel/config-metal-${tag}-${version}
+cp -f /usr/src/linux/.config /usr/kernel/config-metal-${tag}-${version} || exit 1
 
 #$block end
 ##################################################################

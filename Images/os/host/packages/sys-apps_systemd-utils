@@ -8,6 +8,7 @@ sys-apps/systemd-utils
 echo "sys-apps/systemd-utils boot kernel-install" > /etc/portage/package.use/systemd-utils
 
 #@post
+mkdir -p etc/kernel
 cat > /etc/kernel/install.conf << "EOF"
 layout=uki
 uki_generator=dracut
