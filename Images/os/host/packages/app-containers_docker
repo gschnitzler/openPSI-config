@@ -15,11 +15,13 @@ mkdir -p [% paths.data.DOCKER %]
 rm -rf /var/lib/docker
 
 # dont start docker befor bridge is up
-#$file start /etc/init.d/docker
+#$block start
+cat >> /etc/init.d/docker << "EOF"
 depend() {
         after net
 }
-#$file end
+EOF
+#$block end
 
 rc-update add docker default
 

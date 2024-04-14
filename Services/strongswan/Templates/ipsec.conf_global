@@ -2,7 +2,7 @@
 config setup
 
 	# Slightly more verbose logging. Very useful for debugging.
-	charondebug="cfg 2, dmn 2, ike 2, net 2"
+	charondebug="cfg 2, dmn 2, ike 2, net 1" # net reduced from 2 to 1. they changed the code between 5.9.11 and 5.9.14, causing a log entry for every carrier arp packet. 
 
 
 # Default configuration options, used below if an option is not specified.

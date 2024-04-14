@@ -16,6 +16,7 @@ app-admin/pwgen
 dev-libs/libmemcached
 dev-python/python-memcached
 dev-python/wheel
+dev-libs/cyrus-sasl # as of seafile 11
 
 #@pre
 echo "downloading seafile server..."
@@ -34,7 +35,7 @@ mkdir -p /home/seafile && chown seafile.seafile /home/seafile
 #eselect python set $(eselect python list | grep '3.8' | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
 #ln -s /opt/seafile/seafile/lib64/python3.6 /opt/seafile/seafile/lib64/python3.8
 # --user is a gentoo requirement
-su - seafile -c 'pip3 install --break-system-packages --user --timeout=3600 django==3.2.* future==0.18.* mysqlclient==2.1.* pymysql pillow==10.0.* pylibmc captcha==0.4 markupsafe==2.0.1 jinja2 sqlalchemy==2.0.18 psd-tools django-pylibmc django_simple_captcha==0.5.* djangosaml2==1.5.* pysaml2==7.2.* pycryptodome==3.16.* cffi==1.15.1 lxml python-ldap==3.4.3'
+su - seafile -c 'pip3 install --break-system-packages --user --timeout=3600 django==4.2.* future==0.18.* mysqlclient==2.1.* pymysql pillow==10.2.* pylibmc captcha==0.5.* markupsafe==2.0.1 jinja2 sqlalchemy==2.0.18 psd-tools django-pylibmc django_simple_captcha==0.6.* djangosaml2==1.5.* pysaml2==7.2.* pycryptodome==3.16.* cffi==1.15.1 lxml python-ldap==3.4.3
 #sed -i 's/1.14.0/1.14.6/' /opt/seafile/seafile-server-9.0.*/seahub/thirdpart/cffi/__init__.py
 rm -rf /home/seafile/.cache/
 # keep the /home/seafile/.local/ dir. its where pip with --user installs to, and where seafile looks for it.

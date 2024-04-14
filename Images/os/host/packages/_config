@@ -7,7 +7,7 @@ enabled=1
 ###################################
 
 echo "creating /etc/fstab..."
-#$file start > /etc/fstab
+#$file start /etc/fstab
 # fstab system1:
 # this file as is, is required for the buildhost to boot. thus, the IF device.
 # commands like switch must handle this afterwards
