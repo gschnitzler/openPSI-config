@@ -15,16 +15,16 @@ mkdir -p [% paths.data.DOCKER %]
 rm -rf /var/lib/docker
 
 # dont start docker befor bridge is up
-cat >> /etc/init.d/docker << "EOF"
+#$file start /etc/init.d/docker
 depend() {
         after net
 }
-EOF
+#$file end
 
 rc-update add docker default
 
 echo "creating startup script for docker containers"
-cat > /etc/init.d/container << "EOF"
+#$file start /etc/init.d/container
 #!/sbin/openrc-run
 
 
@@ -70,9 +70,9 @@ stop() {
         /usr/bin/genesis stop container > /dev/null 2>&1
         eend $?
 }
+#$file end
 
 
-EOF
 chmod u+x /etc/init.d/container
 rc-update add container default
 

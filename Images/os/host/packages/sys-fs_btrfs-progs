@@ -13,7 +13,7 @@ sys-fs/btrfs-progs
 #@post
 
 # add a maintenance cronjob
-cat > /etc/cron.monthly/btrfs_maintenance << "EOF"
+#$file start /etc/cron.monthly/btrfs_maintenance
 #!/bin/sh
 /bin/sync
 /sbin/btrfs scrub start -B -d  /
@@ -30,7 +30,7 @@ cat > /etc/cron.monthly/btrfs_maintenance << "EOF"
 # resolving disks on the buildhost does obviously not work for all systems, so:
 for i in $(ls /dev/sd?2 /dev/nvme?n1p2 2>/dev/null); do fsck.fat -a $i; done
 
-EOF
+#$file end
 
 chmod a+rx /etc/cron.monthly/btrfs_maintenance
 

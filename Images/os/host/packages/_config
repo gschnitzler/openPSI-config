@@ -7,19 +7,19 @@ enabled=1
 ###################################
 
 echo "creating /etc/fstab..."
-cat > /etc/fstab << "EOF"
+#$file start > /etc/fstab
 # fstab system1:
 # this file as is, is required for the buildhost to boot. thus, the IF device.
 # commands like switch must handle this afterwards
 PARTLABEL=boot_disk1		/boot           vfat            defaults,rw,noatime 0 0
 PARTLABEL=rootfs		/               btrfs           device=[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3,[% IF machine.self.RAID.LEVEL != 'raidS' %]device=[% machine.self.RAID.DISK2 %][% 'p' IF machine.self.RAID.DISK2.match('nvme') %]3,[% END %]subvol=system1,rw,noatime,ssd,discard,degraded 0 0
 PARTLABEL=rootfs		[% paths.data.ROOT %]           btrfs            device=[% machine.self.RAID.DISK1 %][% 'p' IF machine.self.RAID.DISK1.match('nvme') %]3,[% IF machine.self.RAID.LEVEL != 'raidS' %]device=[% machine.self.RAID.DISK2 %][% 'p' IF machine.self.RAID.DISK2.match('nvme') %]3,[% END %]subvol=data,rw,noatime,ssd,discard,degraded 0 0
-EOF
+#$file end
 
 ###################################
 
 echo "creating genesis cmd"
-cat > /usr/bin/mount_genesis << "EOF"
+#$file start /usr/bin/mount_genesis
 #!/bin/bash
 if [ -f [% paths.data.ROOT %]/.mount_genesis ]; then
         if [ "$(stat --format '%a_%u' [% paths.data.ROOT %]/.mount_genesis)" == "700_0" ]; then
@@ -41,15 +41,16 @@ elif [ ! "$(ls -A [% paths.psi.GENESIS %]/ )" ]; then
 	chmod 400 genesis.img;
 	mount -r genesis.img [% paths.psi.ROOT %];
 fi
-EOF
+#$file end
 chmod 500 /usr/bin/mount_genesis
 
-cat > /usr/bin/genesis << "EOF"
+#$file start /usr/bin/genesis
 #!/bin/bash
 /usr/bin/mount_genesis
 cd [% paths.psi.GENESIS %]
 exec ./genesis.pl $*
-EOF
+#$file end
+
 chmod 500 /usr/bin/genesis
 
 ###################################

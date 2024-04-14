@@ -51,7 +51,7 @@ sed -i "s/\(alias ls='ls\)/\1 --group-directories-first/" /etc/bash/bashrc
 ###################################
 
 echo "configuring portage..."
-cat > /etc/portage/make.conf << "EOF"
+#$file start /etc/portage/make.conf
 # several architectures have to be supported.
 # notebooks/workstations (currently amd zen2)
 # servers (currently amd zen2)
@@ -97,7 +97,7 @@ PORT_LOGDIR="/var/log/portage"
 FEATURES="${FEATURES} parallel-install candy"
 # countdown of unmerge
 CLEAN_DELAY="0"
-EOF
+#$file end
 
 mkdir -p /etc/portage/repos.conf && mkdir -p /var/db/repos/gentoo
 cp -f /usr/share/portage/config/repos.conf /etc/portage/repos.conf/gentoo.conf
@@ -140,7 +140,7 @@ touch /etc/udev/rules.d/80-net-setup-link.rules
 ###################################
 
 echo "creating dirsize cmd"
-cat > /usr/bin/dirsize << "EOF"
+#$file start /usr/bin/dirsize
 #!/bin/sh
 if test -z "$1"; then
         echo "dirsize [option] [dir]";
@@ -154,13 +154,13 @@ elif test "$1" = "find"; then
 else
         echo $(dirsize);
 fi
-EOF
+#$file end
 chmod u+x /usr/bin/dirsize
 
 ###################################
 
 echo "creating ipls cmd"
-cat > /usr/bin/ipls << "EOF"
+#$file start /usr/bin/ipls
 #!/bin/bash
 
 ### IPLS v0
@@ -175,7 +175,7 @@ iptables -t nat -L -v -n --line-numbers
 # (it was used to spoof arp pakets from roadwarriors with racoon)
 #echo -en "\n========================================= A R P =========================================\n\n"
 #arptables --line-numbers -L -v -n
-EOF
+#$file end
 
 chmod u+x /usr/bin/ipls
 

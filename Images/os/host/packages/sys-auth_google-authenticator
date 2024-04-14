@@ -19,7 +19,7 @@ echo "media-gfx/qrencode png" >> /etc/portage/package.use/gauth
 
 #@post
 
-cat > /etc/pam.d/sshd << "EOF"
+#$file start /etc/pam.d/sshd
 # nullok, together with the semicolon and ':pam' notation in sshd_config AuthMethods, allows users without 2 factor auth enabled to login (as used for mro accounts)
 # with google auth 1.04, they changed the behaviour of nullok (now returning PAM_IGNORE instead of PAM_SUCCESS). reason: security issues
 # now, the maintainer from google does not seem to fully understand how PAM works (and who really does?).
@@ -43,5 +43,5 @@ account    include	system-remote-login
 password   include	system-remote-login
 session	   include	system-remote-login
 
-EOF
+#$file end
 chmod 644 /etc/pam.d/sshd

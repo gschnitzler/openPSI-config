@@ -9,8 +9,9 @@ echo "sys-apps/systemd-utils boot kernel-install" > /etc/portage/package.use/sys
 
 #@post
 mkdir -p etc/kernel
-cat > /etc/kernel/install.conf << "EOF"
+
+#$file start /etc/kernel/install.conf
 layout=uki
 uki_generator=dracut
 initrd_generator=dracut
-EOF
+#$file end
