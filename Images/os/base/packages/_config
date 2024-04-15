@@ -91,7 +91,6 @@ BINPKG_COMPRESS_FLAGS_ZSTD="-T0 -6"
 GENTOO_MIRRORS="https://ftp.fau.de/gentoo https://de-mirror.org/gentoo/"
 MAKEOPTS="-j28 -l28" # number of cores of the build system (including HT)
 ACCEPT_KEYWORDS="amd64"
-GRUB_PLATFORMS="efi-64"
 EMERGE_DEFAULT_OPTS="--keep-going=y --jobs=28 --load-average=28.00" # number of (HT)
 PORT_LOGDIR="/var/log/portage"
 FEATURES="${FEATURES} parallel-install candy"
