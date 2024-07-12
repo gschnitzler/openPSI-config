@@ -4,10 +4,7 @@ enabled=1
 
 #@package
 
-# zip needed by app to password encrypt on cmdline via exec and shell, utilizing weak crypto. yep, thats right.
 dev-lang/php
-dev-php/pear
-app-arch/zip
 
 #@post
 
@@ -26,6 +23,7 @@ echo ">=dev-lang/php-8.2.0" >> /etc/portage/package.mask/php81
 
 # imap is a webmail dep
 # mysql is needed for pdo, see https://bugs.gentoo.org/show_bug.cgi?id-481190
+# 2024: most of this might be remnants of profitsee not needed anymore
 echo dev-lang/php bcmath bzip2 calendar cgi cli crypt curl exif fpm gd imap intl json mhash mysql mysqli opcache pdo session sockets sodium ssl threads truetype unicode xml xmlreader xmlwriter zip zip-encryption zlib  >> /etc/portage/package.use/php
 echo app-eselect/eselect-php fpm >> /etc/portage/package.use/php
 
