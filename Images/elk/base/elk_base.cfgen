@@ -30,19 +30,19 @@
                 uid   => '10301',
                 gid   => '10301',
                 home  => '/usr/share/elasticsearch',
-                shell => '/bin/bash',
+                shell => '/usr/bin/bash',
             },
             kibana => {
                 uid   => '10302',
                 gid   => '10302',
                 home  => '/opt/kibana',
-                shell => '/sbin/nologin',
+                shell => '/usr/bin/nologin',
             },
             logstash => {
                 uid   => '10303',
                 gid   => '10303',
                 home  => '/var/lib/logstash',
-                shell => '/sbin/nologin',
+                shell => '/usr/bin/nologin',
             },
         }
     }

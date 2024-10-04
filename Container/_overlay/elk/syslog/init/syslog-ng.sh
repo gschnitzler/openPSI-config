@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # the 'network receiver' syslogd. directly logging to elasticsearch
 # droping privs requires other ports, put syslog does not like to run as non-root

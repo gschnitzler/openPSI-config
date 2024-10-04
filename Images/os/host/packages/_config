@@ -20,7 +20,7 @@ PARTLABEL=rootfs		[% paths.data.ROOT %]           btrfs            device=[% mac
 
 echo "creating genesis cmd"
 #$file start /usr/bin/mount_genesis
-#!/bin/bash
+#!/usr/bin/bash
 if [ -f [% paths.data.ROOT %]/.mount_genesis ]; then
         if [ "$(stat --format '%a_%u' [% paths.data.ROOT %]/.mount_genesis)" == "700_0" ]; then
 		if [ ! -d [% paths.psi.GENESIS %] ]; then
@@ -45,7 +45,7 @@ fi
 chmod 500 /usr/bin/mount_genesis
 
 #$file start /usr/bin/genesis
-#!/bin/bash
+#!/usr/bin/bash
 /usr/bin/mount_genesis
 cd [% paths.psi.GENESIS %]
 exec ./genesis.pl $*

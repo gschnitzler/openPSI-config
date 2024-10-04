@@ -31,7 +31,7 @@
                 uid   => '10401',
                 gid   => '10401',
                 home  => '/var/lib/prometheus',
-                shell => '/sbin/nologin',
+                shell => '/usr/bin/nologin',
             },
         }
     }

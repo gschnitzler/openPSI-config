@@ -27,7 +27,7 @@ rc-update add docker default
 
 echo "creating startup script for docker containers"
 #$file start /etc/init.d/container
-#!/sbin/openrc-run
+#!/usr/bin/openrc-run
 
 
 depend() {
@@ -40,7 +40,7 @@ depend() {
 
 start() {
         ebegin "Starting Containers"
-	    PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin:/sbin"
+	    PATH="$PATH:/usr/local/sbin:/usr/local/bin:/usr/bin"
         BREAKPOINT=30; # so it can take the daemon more than 20s to create its sock file. i mean. what? seriously... guys.. come on. the fck?
         echo -n "waiting for docker daemon to start"
 
@@ -51,11 +51,11 @@ start() {
             # in this case: the docker.sock file is not seen (by this script). 
             # interestingly, subshells are unaffected, so lets use some of those
             #if [ -S /var/run/docker.sock ]; then
-            if [ ! $(/bin/bash "docker version" > /dev/null 2>&1) ]; then
+            if [ ! $(/usr/bin/bash "docker version" > /dev/null 2>&1) ]; then
                 echo ""
                 echo "Stopping old Containers (might take a while)"
-                /bin/bash /usr/bin/genesis stop container > /dev/null 2>&1
-                /bin/bash /usr/bin/genesis start container # > /dev/null 2>&1
+                /usr/bin/bash /usr/bin/genesis stop container > /dev/null 2>&1
+                /usr/bin/bash /usr/bin/genesis start container # > /dev/null 2>&1
                 break;
     		fi
             if [ $BREAKPOINT == 0 ]; then

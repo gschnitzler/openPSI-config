@@ -61,7 +61,7 @@
                 uid   => '10402',
                 gid   => '10402',
                 home  => '/dev/null',
-                shell => '/sbin/nologin',
+                shell => '/usr/bin/nologin',
             },
         }
     }

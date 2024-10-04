@@ -1,17 +1,17 @@
-#!/sbin/openrc-run
+#!/usr/bin/openrc-run
 # Copyright 1999-2010 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 start() {
    ebegin "Starting archive server"
-   /usr/sbin/archive_server
+   /usr/bin/archive_server
    eend $?
 }
 
 stop() {
    ebegin "Stopping archive server"
-   for i in  $(ps aux| grep '/usr/sbin/archive_server' | grep perl | awk '{print $2}'); do kill -9 $i; done
+   for i in  $(ps aux| grep '/usr/bin/archive_server' | grep perl | awk '{print $2}'); do kill -9 $i; done
    eend $?
 }
 

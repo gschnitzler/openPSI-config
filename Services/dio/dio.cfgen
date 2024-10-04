@@ -13,7 +13,7 @@
             },
             './dio.pl' => {
                 CHMOD    => '500',
-                LOCATION => '/usr/sbin/dio'
+                LOCATION => '/usr/bin/dio'
             },
             './please.pl' => {
                 CHMOD    => '550',

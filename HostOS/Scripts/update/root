@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 echo "installing HostOS to [% paths.hostos.MOUNT %] using  [% state.images.image.hostos.latest %]"
 mkdir -p [% paths.hostos.MOUNT %]

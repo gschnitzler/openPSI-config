@@ -102,7 +102,7 @@ touch /etc/udev/rules.d/80-net-setup-link.rules
 
 echo "creating dirsize cmd"
 #$file start /usr/bin/dirsize
-#!/bin/sh
+#!/usr/bin/bash
 if test -z "$1"; then
         echo "dirsize [option] [dir]";
         echo "options: sum, find";
@@ -120,7 +120,7 @@ chmod u+x /usr/bin/dirsize
 
 echo "creating ipls cmd"
 #$file start /usr/bin/ipls
-#!/bin/bash
+#!/usr/bin/bash
 
 ### IPLS v0
 

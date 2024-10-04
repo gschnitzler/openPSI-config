@@ -25,7 +25,7 @@
                 uid   => '10501',
                 gid   => '10501',
                 home  => '/home/seafile',
-                shell => '/bin/bash',
+                shell => '/usr/bin/bash',
             },
         }
     }

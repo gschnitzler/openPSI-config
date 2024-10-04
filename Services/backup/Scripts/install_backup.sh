@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 host="[% machine.self.COMPONENTS.SERVICE.backup.TARGET %]"
 user="[% machine.self.COMPONENTS.SERVICE.backup.TARGET_USER %]"
@@ -33,7 +33,7 @@ rm -f /tmp/batch
 sed -i 's/.*8.8.8.8.*//' /etc/resolv.conf
 
 # and we need a cronjob to run
-echo '#!/bin/bash'          > /etc/cron.daily/backup
+echo '#!/usr/bin/bash'          > /etc/cron.daily/backup
 echo 'export HOME=/root'    >> /etc/cron.daily/backup # home is needed, otherwise ssh wont find its known host
 echo genesis backup now     >> /etc/cron.daily/backup
 chmod u+x /etc/cron.daily/backup

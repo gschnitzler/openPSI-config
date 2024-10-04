@@ -14,15 +14,15 @@ sys-fs/btrfs-progs
 
 # add a maintenance cronjob
 #$file start /etc/cron.monthly/btrfs_maintenance
-#!/bin/sh
-/bin/sync
-/sbin/btrfs scrub start -B -d  /
-/bin/sync
-/sbin/btrfs balance start -musage=50 -dusage=50 /
-/bin/sync
-/sbin/btrfs balance start -musage=50 -dusage=50 [% paths.data.ROOT %]
-/bin/sync
-/sbin/fstrim --verbose /
+#!/usr/bin/bash
+/usr/bin/sync
+/usr/bin/btrfs scrub start -B -d  /
+/usr/bin/sync
+/usr/bin/btrfs balance start -musage=50 -dusage=50 /
+/usr/bin/sync
+/usr/bin/btrfs balance start -musage=50 -dusage=50 [% paths.data.ROOT %]
+/usr/bin/sync
+/usr/bin/fstrim --verbose /
 
 # This should possibly be run on its own, or even better during startup
 # Only DISK1 is ever used/mounted

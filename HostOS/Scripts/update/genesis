@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 echo "updating genesis using  $(ls [% paths.data.IMAGES %]/genesis_* | sort -rn | head -n 1)"
 cd / && umount -lf [% paths.psi.ROOT %]

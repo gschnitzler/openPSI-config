@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # TT variables to be setup in container backup cmd
 WEEKDAY=$(date +%w)

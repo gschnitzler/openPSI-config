@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/sh
 # default updown script
 #
 # Copyright (C) 2003-2004 Nigel Meteringham
@@ -131,7 +131,7 @@
 #
 
 # define a minimum PATH environment in case it is not set
-PATH="/sbin:/bin:/usr/sbin:/usr/bin:/usr/sbin"
+PATH="/usr/bin"
 export PATH
 
 #chain="vpn_[% plugin.node.NAMES.SHORT %]"

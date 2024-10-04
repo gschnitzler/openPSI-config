@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # this sets the auth methods in sshd. used to enable/disable 2factor auth
 echo "setting sshd auth methods:"

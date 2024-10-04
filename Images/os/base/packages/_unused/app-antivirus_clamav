@@ -11,7 +11,7 @@ app-antivirus/clamav
 # clam needs loosened pax settings. was in a hurry, disabled all
 #paxctl-ng -pemr /usr/bin/freshclam
 #paxctl-ng -pemr /usr/bin/clamconf
-#paxctl-ng -pemr /usr/sbin/clamd
+#paxctl-ng -pemr /usr/bin/clamd
 
 # although installed as requirement for subsequent images, it is disabled, because its not needed right now and i think freshclam more often than not blocks booting of a machine.
 #rc-update add clamd default

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 #/dev/sda1 	(bootloader) 	2M 		BIOS boot partition
 #/dev/sda2 	fat32 		128M 		Boot/EFI system partition (for future use)

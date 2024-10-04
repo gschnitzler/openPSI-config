@@ -18,7 +18,7 @@ ln -s [% images.paths.CONFIG %]/freshclam.conf /etc/clamav/freshclam.conf
 ln -s [% images.paths.CONFIG %]/clamd.conf /etc/clamav/clamd.conf
 
 # clam needs loosened pax settings
-#paxctl -cm /usr/sbin/clamd && paxctl -cm /usr/bin/freshclam
+#paxctl -cm /usr/bin/clamd && paxctl -cm /usr/bin/freshclam
 
 # clamav and amavis need to talk
 gpasswd -a clamav amavis

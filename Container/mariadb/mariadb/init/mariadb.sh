@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 # the sed below got introduced, because of a bug. remove this once the bug is resolved
 # https://bugs.gentoo.org/show_bug.cgi?id=649902

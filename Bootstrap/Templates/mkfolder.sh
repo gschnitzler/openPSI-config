@@ -1,2 +1,2 @@
-#!/bin/bash
+#!/usr/bin/bash
 mkdir -p [% paths.data.ROOT %]

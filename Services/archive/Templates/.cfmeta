@@ -4,7 +4,7 @@
     },
     './archive.pl' => {
         CHMOD    => '500',
-        LOCATION => '/usr/sbin/archive_server'
+        LOCATION => '/usr/bin/archive_server'
     },
     './own_priv' => {
         CHMOD    => '600',

@@ -24,7 +24,7 @@
                 uid   => '10501',
                 gid   => '10501',
                 home  => '/usr/share/grafana',
-                shell => '/sbin/nologin',
+                shell => '/usr/bin/nologin',
             },
         }
     }
