@@ -6,7 +6,6 @@ dev-python/setuptools
 dev-python/pip
 dev-python/python-ldap
 dev-python/ldap3 # i guess
-sys-auth/pam_ldap # i guess
 sys-auth/nss_ldap # i guess
 # docs forgot to mention this.
 dev-python/requests
@@ -21,7 +20,7 @@ dev-libs/cyrus-sasl # as of seafile 11
 #@pre
 echo "downloading seafile server..."
 mkdir -p /opt/seafile 
-cd /opt/seafile && wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_11.0.9_x86-64.tar.gz
+cd /opt/seafile && wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_11.0.12_x86-64.tar.gz
 cd /opt/seafile && tar zfx *.tar.gz
 
 rm -rf /opt/seafile/*.tar.gz
