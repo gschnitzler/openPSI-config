@@ -17,14 +17,17 @@
         scripts => './os/base/scripts',
 
         # the trick with having the from content reference an add image is only allowed for root images
-        from      => 'stage3-amd64-hardened-nomultilib-openrc',
+        #from      => 'stage3-amd64-hardened-nomultilib-openrc', # seemingly, nomultilib stage3 got removed
+        from      => 'stage3-amd64-hardened-openrc',
         build     => 'yes',
         bootstrap => 'yes',
         docker    => 'yes',
         add       => {
-            'stage3-amd64-hardened-nomultilib-openrc' => {
+            #'stage3-amd64-hardened-nomultilib-openrc' => {
+            'stage3-amd64-hardened-openrc' => {
                 source =>
-'ftp://ftp.fau.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
+#'ftp://ftp.fau.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
+'ftp://ftp.fau.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-openrc/stage3-amd64-hardened-openrc-*.tar.xz',
                 target => '/'
             },
 

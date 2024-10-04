@@ -2,38 +2,11 @@
 
 enabled=1
 
-#@post group=16
-
-echo "syncing repository..."
-emerge --sync --quiet
-echo "reemerging portage..."
-emerge --oneshot portage
-echo "install Locale::GetText..."
-# more often than not, this prevents an error later
-emerge --oneshot dev-perl/Locale-gettext
-echo "updating world..."
-emerge --update --newuse --deep --with-bdeps=y @world
-
-echo Base Update: `date +%y%m%d%H` >> /etc/genesis-release
-
-echo "all done"
-echo "check:"
-echo "gcc-config -l"
-echo "eselect kernel list"
-echo "eselect python list"
-
-##################################################################
-
 #@pre group=5
 
 echo "configuring system...."
-
-###################################
-
 echo "switching keymap to german..."
 sed -i 's/\(keymap=\)"us"/\1\"de-latin1\"/' /etc/conf.d/keymaps
-
-###################################
 
 # activate serial console
 #sed -i 's/^#\(.*ttyS.*\)/\1/' /etc/inittab
@@ -47,8 +20,6 @@ sed -i 's/^\(EXEC 01;\)..\(.*\)/\131\2/' /etc/DIR_COLORS
 sed -i 's/\(PS1+=.*\)34\(.*\)/\132\2/' /etc/bash/bashrc
 # ls  --group-directories-first as default
 sed -i "s/\(alias ls='ls\)/\1 --group-directories-first/" /etc/bash/bashrc
-
-###################################
 
 echo "configuring portage..."
 #$file start /etc/portage/make.conf
@@ -115,9 +86,6 @@ echo 'app-xemacs/*' >> /etc/portage/package.mask/xemacs
 echo 'sys-fs/udev' >> /etc/portage/package.mask/systemd
 echo 'sys-apps/systemd' >> /etc/portage/package.mask/systemd
 
-
-###################################
-
 echo "activating forwarding permanently..."
 #sed -i 's/\(net.ipv4.ip_forward = \)0/\11/' /etc/sysctl.conf
 # seems like /etc/sysctl.conf is not in stage3 anymore. there is a file in /usr/share, but it has some questionable defaults.
@@ -126,17 +94,11 @@ echo 'net.ipv4.ip_forward = 1' > /etc/sysctl.conf
 echo "# elasticsearch needs this to work properly" >> /etc/sysctl.conf
 echo "vm.max_map_count=262144" >> /etc/sysctl.conf
 
-###################################
-
 echo "disabling that all network devices must be up for init scripts to work."
 sed -i 's/#\(rc_depend_strict=\)\"YES\"/\1\"NO\"/' /etc/rc.conf
 
-###################################
-
 echo "disable random interface names"
 touch /etc/udev/rules.d/80-net-setup-link.rules
-
-###################################
 
 echo "creating dirsize cmd"
 #$file start /usr/bin/dirsize
@@ -155,8 +117,6 @@ else
 fi
 #$file end
 chmod u+x /usr/bin/dirsize
-
-###################################
 
 echo "creating ipls cmd"
 #$file start /usr/bin/ipls
@@ -178,8 +138,6 @@ iptables -t nat -L -v -n --line-numbers
 
 chmod u+x /usr/bin/ipls
 
-###################################
-
 echo "changing locale..."
 # the US one seems to be required. otherwise there is a lot of errors all over the place like
 #/usr/bin/locale: Cannot set LC_CTYPE to default locale: No such file or directory
@@ -191,27 +149,19 @@ sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 echo 'en_GB.UTF-8 UTF-8' >>  /etc/locale.gen
 locale-gen && eselect locale set $(eselect locale list | grep en_GB.utf8 | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
 
-###################################
-
 echo "syncing repository..."
 sed -i 's/\(sync-rsync-verify-metamanifest\).*/\1\ =\ no/' /etc/portage/repos.conf/gentoo.conf
 emerge --sync --quiet
 
-###################################
-
 echo "selecting right profile"
-eselect profile set $(eselect profile list | grep 'default/linux/amd64/.*/no-multilib/hardened' | grep stable | grep -v selinux | awk '{print $1}' | tail -n1 | sed -e 's/\[\([0-9]\+\)\]/\1/')
+eselect profile set $(eselect profile list | grep 'default/linux/amd64/.*/no-multilib/hardened (stable)' | grep -v split-usr | awk '{print $1}' | tail -n1 | sed -e 's/\[\([0-9]\+\)\]/\1/')
 eselect profile list
 #echo "use \'eselect profile set N\', then type exit"
-
-###################################
 
 echo "setting timezone: "
 rm -f /etc/localtime #&& ln -s /usr/share/zoneinfo/UTC /etc/localtime
 echo "UTC" > /etc/timezone
 emerge --config sys-libs/timezone-data
-
-###################################
 
 # get rid of the unknown_domain issue on the login screen.
 # sadly, i never figured out how to fix it.
@@ -228,3 +178,24 @@ env-update && source /etc/profile
 #emerge @preserved-rebuild
 # cleanup is done in post
 
+########################################
+
+
+#@post group=16
+echo "syncing repository..."
+emerge --sync --quiet
+echo "reemerging portage..."
+emerge --oneshot portage
+echo "install Locale::GetText..."
+# more often than not, this prevents an error later
+emerge --oneshot dev-perl/Locale-gettext
+echo "updating world..."
+emerge --update --newuse --deep --with-bdeps=y @world
+
+echo Base Update: `date +%y%m%d%H` >> /etc/genesis-release
+
+echo "all done"
+echo "check:"
+echo "gcc-config -l"
+echo "eselect kernel list"
+echo "eselect python list"
