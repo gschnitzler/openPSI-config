@@ -2,7 +2,7 @@
     seafile_base => {
         root    => './seafile/base',
         scripts => './os/base/scripts',
-        from    => 'amp81_base',
+        from    => 'amp82_base',
         build   => 'yes',
         docker  => 'yes',
         add     => {

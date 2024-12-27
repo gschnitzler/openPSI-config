@@ -1,6 +1,6 @@
 {
-    amp81_base => {
-        root    => './amp/base81',
+    amp82_base => {
+        root    => './amp/base82',
         scripts => './os/base/scripts',
         from    => 'mariadb_galera',
         build   => 'yes',
@@ -12,7 +12,7 @@
             }
         },
         export => {
-            amp81_base => {
+            amp82_base => {
                 source  => '/',
                 diff    => 1,
                 exclude => ['./var/db/repos/gentoo/*'],

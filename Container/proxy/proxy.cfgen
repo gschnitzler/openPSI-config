@@ -24,7 +24,7 @@
             },
             DOCKER => {
                 OPTS  => '',
-                IMAGE => 'amp81_base',
+                IMAGE => 'amp82_base',
             },
             INHERIT => { http_proxy => 'yes', },
             BACKUP  => { FOLDERS           => 'PERSISTENT', }
