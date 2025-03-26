@@ -5,7 +5,7 @@ enabled=1
 app-editors/vim
 
 #@post
-eselect editor set $(eselect editor list | grep 'vi' | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
+eselect editor set $(eselect editor list | grep 'vim' | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
 echo "colorscheme darkblue" >> /etc/vim/vimrc
 
 
