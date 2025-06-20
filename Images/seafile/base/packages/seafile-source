@@ -20,7 +20,7 @@ dev-libs/cyrus-sasl # as of seafile 11
 #@pre
 echo "downloading seafile server..."
 mkdir -p /opt/seafile 
-cd /opt/seafile && wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_12.0.11_x86-64.tar.gz
+cd /opt/seafile && wget https://s3.eu-central-1.amazonaws.com/download.seadrive.org/seafile-server_12.0.14_x86-64.tar.gz
 cd /opt/seafile && tar zfx *.tar.gz
 
 rm -rf /opt/seafile/*.tar.gz
