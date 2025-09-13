@@ -1,5 +1,6 @@
 
-	left=[% state.network.PUBLIC.ADDRESS %]
+	# set left to any not [% state.network.PUBLIC.ADDRESS %], otherwise ip changes on dhcp hosts require a config update
+	left=%any 
 	leftcert=[% plugin.node.left_cert %]
 	leftid=@[% machine.self.NAMES.FULL %]
 	leftsubnet=[% plugin.node.left_network.NETWORK %]
