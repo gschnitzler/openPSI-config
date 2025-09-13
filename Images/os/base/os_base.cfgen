@@ -27,7 +27,7 @@
             'stage3-amd64-hardened-openrc' => {
                 source =>
 #'ftp://ftp.fau.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-nomultilib-openrc/stage3-amd64-hardened-nomultilib-openrc-*.tar.xz',
-'ftp://ftp.fau.de/gentoo/releases/amd64/autobuilds/current-stage3-amd64-hardened-openrc/stage3-amd64-hardened-openrc-*.tar.xz',
+'ftp://linux.rz.ruhr-uni-bochum.de/gentoo-mirror//releases/amd64/autobuilds/current-stage3-amd64-hardened-openrc/stage3-amd64-hardened-openrc-*.tar.xz',
                 target => '/'
             },
 
