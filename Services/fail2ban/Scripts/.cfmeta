@@ -1,0 +1,7 @@
+{
+  './fail2ban_init' => {
+  	LOCATION => '/runonce/fail2ban_init',
+	CHMOD => '550'
+  },
+}
+

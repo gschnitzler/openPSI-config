@@ -2,6 +2,7 @@
     fail2ban => {
         REQUIRE   => ['network'],
         TEMPLATES => './fail2ban/Templates',
+        SCRIPTS   => './fail2ban/Scripts',
     }
 };
 

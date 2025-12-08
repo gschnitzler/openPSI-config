@@ -8,7 +8,7 @@ dev-python/pyinotify
 #@pre
 
 #@post
-rc-update add fail2ban default
+
 
 
 
