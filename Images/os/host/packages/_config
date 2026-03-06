@@ -27,10 +27,6 @@ if [ -f [% paths.data.ROOT %]/.mount_genesis ]; then
 	                /data/.mount_genesis;
 		fi
         fi
-elif [ -d /media/sf_PSI/genesis ]; then
-	if [ ! -d [% paths.psi.GENESIS %] ]; then
-        mount -t vboxsf -o rw,uid=2001,gid=2001,umask=077 PSI [% paths.psi.ROOT %]; # hardcoded gschnitzler.psdev
-	fi
 elif [ ! "$(ls -A [% paths.psi.GENESIS %]/ )" ]; then
 	image=$(ls [% paths.data.IMAGES %]/genesis_* | sort -rn | head -n 1);
     	# some copy implementations are broken and dont support -f
