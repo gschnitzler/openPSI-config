@@ -47,8 +47,8 @@ USE="-ipv6 -X -gtk -gnome -kde -qt4 -alsa -emacs -xemacs -systemd -cups -libress
 # the dep packages often do not support all python 3 targets.
 # see https://wiki.gentoo.org/wiki/Project:Python/PYTHON_TARGETS
 # and https://www.gentoo.org/support/news-items/2020-04-22-python3-7.html
-PYTHON_TARGETS="python3_11"
-PYTHON_SINGLE_TARGET="python3_11"
+PYTHON_TARGETS="python3_13"
+PYTHON_SINGLE_TARGET="python3_13"
 # used for lsyncd
 # LUA_SINGLE_TARGET="lua5-4"
 
@@ -60,9 +60,9 @@ BINPKG_COMPRESS_FLAGS_ZSTD="-T0 -6"
 
 # might be a good idea to put cores and gentoo mirrors into config
 GENTOO_MIRRORS="https://ftp.fau.de/gentoo https://de-mirror.org/gentoo/"
-MAKEOPTS="-j28 -l28" # number of cores of the build system (including HT)
+MAKEOPTS="-j48 -l48" # number of cores of the build system (including HT)
 ACCEPT_KEYWORDS="amd64"
-EMERGE_DEFAULT_OPTS="--keep-going=y --jobs=28 --load-average=28.00" # number of (HT)
+EMERGE_DEFAULT_OPTS="--keep-going=y --jobs=48 --load-average=48.00" # number of (HT)
 PORT_LOGDIR="/var/log/portage"
 FEATURES="${FEATURES} parallel-install candy"
 # countdown of unmerge
@@ -147,7 +147,7 @@ echo "changing locale..."
 sed -i 's/#\(en_US.UTF-8 UTF-8\)/\1/' /etc/locale.gen
 #en_US does give 12h time. GB gives 24h time. use that
 echo 'en_GB.UTF-8 UTF-8' >>  /etc/locale.gen
-locale-gen && eselect locale set $(eselect locale list | grep en_GB.utf8 | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
+locale-gen && eselect locale set $(eselect locale list | grep en_GB.UTF-8 | awk '{print $1}' | sed -e 's/\[\([0-9]\+\)\]/\1/')
 
 echo "syncing repository..."
 sed -i 's/\(sync-rsync-verify-metamanifest\).*/\1\ =\ no/' /etc/portage/repos.conf/gentoo.conf

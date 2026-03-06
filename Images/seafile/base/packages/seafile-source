@@ -35,7 +35,7 @@ mkdir -p /home/seafile && chown seafile.seafile /home/seafile
 #ln -s /opt/seafile/seafile/lib64/python3.6 /opt/seafile/seafile/lib64/python3.8
 # --user is a gentoo requirement
 
-su - seafile -c 'pip3 install --break-system-packages --user --timeout=3600 django==4.2.* future==1.0.* mysqlclient==2.2.* pymysql pillow==10.4.* pillow_heif==0.18.0 pylibmc markupsafe==2.0.1 jinja2 sqlalchemy==2.0.18 psd-tools captcha==0.6.* django-pylibmc django_simple_captcha==0.6.* djangosaml2==1.9.* pysaml2==7.3.* pycryptodome==3.20.* cffi==1.17.0 lxml python-ldap==3.4.* gevent==24.2.*'
+su - seafile -c 'pip3 install --break-system-packages --user --timeout=3600 django==4.2.* future==1.0.* mysqlclient==2.2.* pymysql pillow==10.4.* pillow_heif==0.18.0 pylibmc markupsafe==2.0.1 jinja2 sqlalchemy==2.0.18 psd-tools captcha==0.6.* django-pylibmc django_simple_captcha==0.6.* djangosaml2==1.9.* pysaml2==7.3.* pycryptodome==3.20.* cffi==1.17.0 lxml python-ldap==3.4.* gevent==24.10.*'
 #sed -i 's/1.14.0/1.14.6/' /opt/seafile/seafile-server-9.0.*/seahub/thirdpart/cffi/__init__.py
 rm -rf /home/seafile/.cache/
 # keep the /home/seafile/.local/ dir. its where pip with --user installs to, and where seafile looks for it.
