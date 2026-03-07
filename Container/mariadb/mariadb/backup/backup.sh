@@ -9,7 +9,7 @@ rm -rf $BACKUPDIR/$WEEKDAY
 mkdir -p $BACKUPDIR/$WEEKDAY
 
 # create full backup
-mariabackup --backup --user=mariabackup --password="$DBPW" --target_dir=$BACKUPDIR/$WEEKDAY 2>&1
+mariadb-backup --backup --user=mariabackup --password="$DBPW" --target_dir=$BACKUPDIR/$WEEKDAY 2>&1
 # fix files
-mariabackup --prepare --target_dir=$BACKUPDIR/$WEEKDAY 2>&1
+mariadb-backup --prepare --target_dir=$BACKUPDIR/$WEEKDAY 2>&1
 
