@@ -1,0 +1,16 @@
+#@description
+guest agent for proxmox
+
+#@flags
+enabled=1
+
+#@package
+app-emulation/qemu-guest-agent
+
+#@pre
+
+#@post
+rc-update add qemu-guest-agent default
+
+
+
