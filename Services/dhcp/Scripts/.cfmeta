@@ -1,5 +1,5 @@
 {
-    './enable_config' => {
+    './enable_dhcp_config' => {
         LOCATION => '/runonce/enable_dhcp_config',
         CHMOD    => '550'
     },

@@ -23,3 +23,12 @@ sys-kernel/dracut
 
 #echo "sys-kernel/dracut ~amd64" >> /etc/portage/package.accept_keywords/dracut
 
+# i18n module requires vconsole to be set. this enables latin keyboard in rescue shell.
+# however, the error 
+# dracut[E]: i18n_vars not set!  Please set up i18n_vars in  configuration file.
+# was not fixed by this.
+#echo "creating vconsole.conf"
+##$file start /etc/vconsole.conf
+#KEYMAP=de-latin1
+#FONT=eurlatgr
+##$file end
