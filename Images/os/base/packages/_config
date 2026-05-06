@@ -98,6 +98,7 @@ echo "disabling that all network devices must be up for init scripts to work."
 sed -i 's/#\(rc_depend_strict=\)\"YES\"/\1\"NO\"/' /etc/rc.conf
 
 echo "disable random interface names"
+mkdir -p /etc/udev/rules.d/ 
 touch /etc/udev/rules.d/80-net-setup-link.rules
 
 echo "creating dirsize cmd"
@@ -151,6 +152,7 @@ locale-gen && eselect locale set $(eselect locale list | grep en_GB.UTF-8 | awk 
 
 echo "syncing repository..."
 sed -i 's/\(sync-rsync-verify-metamanifest\).*/\1\ =\ no/' /etc/portage/repos.conf/gentoo.conf
+sed -i 's/\(sync-type\).*/\1\ =\ webrsync/' /etc/portage/repos.conf/gentoo.conf # use web ports to circumvent corpo firewalls
 emerge --sync --quiet
 
 echo "selecting right profile"
