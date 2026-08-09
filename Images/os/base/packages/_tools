@@ -11,7 +11,7 @@ dev-debug/strace
 net-analyzer/nmap
 net-analyzer/netcat
 net-analyzer/tcpdump
-net-dns/bind-tools
+net-dns/bind # for the tools
 net-ftp/lftp
 net-misc/telnet-bsd
 net-misc/curl
